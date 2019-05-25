@@ -141,6 +141,94 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-25T14:10:58.339Z">2019-05-25</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 549 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/05/25/my_first/">Linux下完成hexo+github pages搭建个人博客</a>
+            
+        </h1>
+        <div class="content">
+            <h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install gcc g++ make -y &amp;&amp; wget https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz &amp;&amp; tar zxf node-v8.1.2.tar.gz &amp;&amp; <span class="hljs-built_in">cd</span> node-v8.1.2 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h2 id="安装nmp"><a href="#安装nmp" class="headerlink" title="安装nmp"></a>安装nmp</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h2><p> <a href="https://github.com/" target="_blank" rel="noopener">注册github</a></p>
+<h2 id="在个人设置中创建存储库（Your-repositories"><a href="#在个人设置中创建存储库（Your-repositories" class="headerlink" title="在个人设置中创建存储库（Your repositories)"></a>在个人设置中创建存储库（Your repositories)</h2><ul>
+<li>Ower: username(登陆github的用户名) / repository name:username.github.io<h2 id="在终端生成ssh-key"><a href="#在终端生成ssh-key" class="headerlink" title="在终端生成ssh key"></a>在终端生成ssh key</h2></li>
+<li><p>在当前用户目录创建.ssh文件夹</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/.ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开./ssh</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置密码</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按下回车后在~/.ssh文件夹下生成两个ssh key(id_rsa,id_rsa.pub)</p>
+</li>
+<li>生成公钥作为本机ssh连接github的口令</li>
+<li><p>如报错为：Could not open a connection to your authentication agent。执行下列命令可解决：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入github个人设置页面，点击SSH AND GPGKEYS添加一个SSH KEY标题自拟，KEY的内容为在终端输入下面命令，复制密钥（注意复制内容包括头部ssh-rsa与尾部的xxx@xxx）添加完成。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="配置git-username和email是github上的用户名和注册用的邮箱"><a href="#配置git-username和email是github上的用户名和注册用的邮箱" class="headerlink" title="配置git,username和email是github上的用户名和注册用的邮箱"></a>配置git,username和email是github上的用户名和注册用的邮箱</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="hljs-string">"username"</span></span><br><span class="line">$ git config --global user.email <span class="hljs-string">"email"</span></span><br></pre></td></tr></table></figure>
+<h2 id="测试是否能ssh连接"><a href="#测试是否能ssh连接" class="headerlink" title="测试是否能ssh连接"></a>测试是否能ssh连接</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li>若报错消息为： The authenticity of host ‘github.com (xxx.xxx.xxx.xxx)’ can’t be established.<br>RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.<br>Are you sure you want to continue connecting (yes/no)?时不能按回车，选择yes即可，在执行上面代码尝试连接，若信息为：You’re successfully authenticated,but github does not provide shell access.则为成功连接。</li>
+</ul>
+<h2 id="搭建本地Hexo"><a href="#搭建本地Hexo" class="headerlink" title="搭建本地Hexo"></a>搭建本地Hexo</h2><ul>
+<li><p>安装hexo</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建blog网站</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog</span><br><span class="line">$ <span class="hljs-built_in">cd</span> blog</span><br><span class="line">$ npm install</span><br><span class="line">$ hexo server</span><br><span class="line">$ npm instsall hexo-deployer-git -save</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="配置网站的deploy"><a href="#配置网站的deploy" class="headerlink" title="配置网站的deploy"></a>配置网站的deploy</h2><ul>
+<li>打开网站配置文件_config.yml<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> _config.yml</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">type</span>:git</span><br><span class="line">	$ <span class="hljs-built_in">type</span>:git</span><br><span class="line">	$ repo:（在github中打开建立的项目复制ssh形式的地址）</span><br><span class="line">	$ branch:（默认为master）</span><br></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开浏览器输入localhost:4000查看效果<h2 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="搭建完成。"><a href="#搭建完成。" class="headerlink" title="搭建完成。"></a>搭建完成。</h2><h2 id="参考链接：https-blog-csdn-net-ctsas-article-details-73694849"><a href="#参考链接：https-blog-csdn-net-ctsas-article-details-73694849" class="headerlink" title="参考链接：https://blog.csdn.net/ctsas/article/details/73694849"></a>参考链接：<a href="https://blog.csdn.net/ctsas/article/details/73694849" target="_blank" rel="noopener">https://blog.csdn.net/ctsas/article/details/73694849</a></h2>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-05-24T05:53:48.726Z">2019-05-24</time>
                 
                 
@@ -199,22 +287,22 @@
             <div class="level-item has-text-centered">
                 <div>
                     
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Lsadaharu">
                     
                     
                     <p class="is-size-4 is-block">
-                        Your name
+                        Lsadaharu
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        Your title
+                        hiahiahiahia
                     </p>
                     
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Your location</span>
+                        <span>Hu Nan</span>
                     </p>
                     
                 </div>
@@ -224,17 +312,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Post
+                        Articles
                     </p>
                     <p class="title has-text-weight-normal">
-                        1
+                        2
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        Catégories
                     </p>
                     <p class="title has-text-weight-normal">
                         0
@@ -253,14 +341,14 @@
             </div>
         </nav>
         <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank">
-                Follow</a>
+            <a class="level-item button is-link is-rounded" href="https://github.com/lsadaharu" target="_blank">
+                SUIVRE</a>
         </div>
         
         
         <div class="level is-mobile">
             
-            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/ppoffice">
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="https://github.com/lsadaharu">
                 
                 <i class="fab fa-github"></i>
                 
@@ -303,7 +391,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Links
+            Liens
         </h3>
         <ul class="menu-list">
         
@@ -341,7 +429,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Categories
+                Catégories
             </h3>
             <ul class="menu-list">
             
@@ -359,8 +447,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/05/25/my_first/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linux下完成hexo+github pages搭建个人博客">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-25T14:10:58.339Z">2019-05-25</time></div>
+                    <a href="/2019/05/25/my_first/" class="has-link-black-ter is-size-6">Linux下完成hexo+github pages搭建个人博客</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -399,7 +506,7 @@
                     <span class="level-item">May 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -437,8 +544,27 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Recent
+            Récents
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/05/25/my_first/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Linux下完成hexo+github pages搭建个人博客">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-25T14:10:58.339Z">2019-05-25</time></div>
+                    <a href="/2019/05/25/my_first/" class="has-link-black-ter is-size-6">Linux下完成hexo+github pages搭建个人博客</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -477,7 +603,7 @@
                     <span class="level-item">May 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">1</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -670,9 +796,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
+                POSTS: 'Articles',
                 PAGES: 'Pages',
-                CATEGORIES: 'Categories',
+                CATEGORIES: 'Catégories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },

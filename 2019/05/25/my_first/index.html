@@ -2,19 +2,23 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Catégories - Hexo</title>
+<title>Linux下完成hexo+github pages搭建个人博客 - Hexo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+    <meta name="description" content="安装nodejs1$ apt-get install gcc g++ make -y &amp;amp;&amp;amp; wget https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz &amp;amp;&amp;amp; tar zxf node-v8.1.2.tar.gz &amp;amp;&amp;amp; cd node-v8.1.2 &amp;amp;&amp;amp; ./configure &amp;amp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下完成hexo+github pages搭建个人博客">
+<meta property="og:url" content="http://yoursite.com/2019/05/25/my_first/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装nodejs1$ apt-get install gcc g++ make -y &amp;amp;&amp;amp; wget https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz &amp;amp;&amp;amp; tar zxf node-v8.1.2.tar.gz &amp;amp;&amp;amp; cd node-v8.1.2 &amp;amp;&amp;amp; ./configure &amp;amp">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-05-25T13:15:11.196Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Linux下完成hexo+github pages搭建个人博客">
+<meta name="twitter:description" content="安装nodejs1$ apt-get install gcc g++ make -y &amp;amp;&amp;amp; wget https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz &amp;amp;&amp;amp; tar zxf node-v8.1.2.tar.gz &amp;amp;&amp;amp; cd node-v8.1.2 &amp;amp;&amp;amp; ./configure &amp;amp">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -89,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Hexo" height="28">
+                <img src="/images/logo.svg" alt="Linux下完成hexo+github pages搭建个人博客" height="28">
             
             </a>
         </div>
@@ -101,7 +105,7 @@
                 
                 <a class="navbar-item" href="/archives">Archives</a>
                 
-                <a class="navbar-item is-active" href="/categories">Categories</a>
+                <a class="navbar-item" href="/categories">Categories</a>
                 
                 <a class="navbar-item" href="/tags">Tags</a>
                 
@@ -134,19 +138,141 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Catégories
-            </h3>
-            <ul class="menu-list">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-25T14:10:58.339Z">2019-05-25</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 549 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            </ul>
+                Linux下完成hexo+github pages搭建个人博客
+            
+        </h1>
+        <div class="content">
+            <h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install gcc g++ make -y &amp;&amp; wget https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz &amp;&amp; tar zxf node-v8.1.2.tar.gz &amp;&amp; <span class="hljs-built_in">cd</span> node-v8.1.2 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h2 id="安装nmp"><a href="#安装nmp" class="headerlink" title="安装nmp"></a>安装nmp</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h2><p> <a href="https://github.com/" target="_blank" rel="noopener">注册github</a></p>
+<h2 id="在个人设置中创建存储库（Your-repositories"><a href="#在个人设置中创建存储库（Your-repositories" class="headerlink" title="在个人设置中创建存储库（Your repositories)"></a>在个人设置中创建存储库（Your repositories)</h2><ul>
+<li>Ower: username(登陆github的用户名) / repository name:username.github.io<h2 id="在终端生成ssh-key"><a href="#在终端生成ssh-key" class="headerlink" title="在终端生成ssh key"></a>在终端生成ssh key</h2></li>
+<li><p>在当前用户目录创建.ssh文件夹</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/.ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开./ssh</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置密码</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按下回车后在~/.ssh文件夹下生成两个ssh key(id_rsa,id_rsa.pub)</p>
+</li>
+<li>生成公钥作为本机ssh连接github的口令</li>
+<li><p>如报错为：Could not open a connection to your authentication agent。执行下列命令可解决：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入github个人设置页面，点击SSH AND GPGKEYS添加一个SSH KEY标题自拟，KEY的内容为在终端输入下面命令，复制密钥（注意复制内容包括头部ssh-rsa与尾部的xxx@xxx）添加完成。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="配置git-username和email是github上的用户名和注册用的邮箱"><a href="#配置git-username和email是github上的用户名和注册用的邮箱" class="headerlink" title="配置git,username和email是github上的用户名和注册用的邮箱"></a>配置git,username和email是github上的用户名和注册用的邮箱</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="hljs-string">"username"</span></span><br><span class="line">$ git config --global user.email <span class="hljs-string">"email"</span></span><br></pre></td></tr></table></figure>
+<h2 id="测试是否能ssh连接"><a href="#测试是否能ssh连接" class="headerlink" title="测试是否能ssh连接"></a>测试是否能ssh连接</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li>若报错消息为： The authenticity of host ‘github.com (xxx.xxx.xxx.xxx)’ can’t be established.<br>RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.<br>Are you sure you want to continue connecting (yes/no)?时不能按回车，选择yes即可，在执行上面代码尝试连接，若信息为：You’re successfully authenticated,but github does not provide shell access.则为成功连接。</li>
+</ul>
+<h2 id="搭建本地Hexo"><a href="#搭建本地Hexo" class="headerlink" title="搭建本地Hexo"></a>搭建本地Hexo</h2><ul>
+<li><p>安装hexo</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建blog网站</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog</span><br><span class="line">$ <span class="hljs-built_in">cd</span> blog</span><br><span class="line">$ npm install</span><br><span class="line">$ hexo server</span><br><span class="line">$ npm instsall hexo-deployer-git -save</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="配置网站的deploy"><a href="#配置网站的deploy" class="headerlink" title="配置网站的deploy"></a>配置网站的deploy</h2><ul>
+<li>打开网站配置文件_config.yml<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> _config.yml</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">type</span>:git</span><br><span class="line">	$ <span class="hljs-built_in">type</span>:git</span><br><span class="line">	$ repo:（在github中打开建立的项目复制ssh形式的地址）</span><br><span class="line">	$ branch:（默认为master）</span><br></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开浏览器输入localhost:4000查看效果<h2 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="搭建完成。"><a href="#搭建完成。" class="headerlink" title="搭建完成。"></a>搭建完成。</h2><h2 id="参考链接：https-blog-csdn-net-ctsas-article-details-73694849"><a href="#参考链接：https-blog-csdn-net-ctsas-article-details-73694849" class="headerlink" title="参考链接：https://blog.csdn.net/ctsas/article/details/73694849"></a>参考链接：<a href="https://blog.csdn.net/ctsas/article/details/73694849" target="_blank" rel="noopener">https://blog.csdn.net/ctsas/article/details/73694849</a></h2>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
         </div>
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/24/hello-world/">
+                <span class="level-item">Hello World</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -512,7 +638,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Hexo" height="28">
+                    <img src="/images/logo.svg" alt="Linux下完成hexo+github pages搭建个人博客" height="28">
                 
                 </a>
                 <p class="is-size-7">
