@@ -2,19 +2,19 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Hexo</title>
+<title>lsadaharu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
     <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="lsadaharu">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="lsadaharu">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="lsadaharu">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -89,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Hexo" height="28">
+                <img src="/images/logo.svg" alt="lsadaharu" height="28">
             
             </a>
         </div>
@@ -141,7 +141,110 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-05-25T14:10:58.339Z">2019-05-25</time>
+                <time class="level-item has-text-grey" datetime="2019-07-27T04:47:06.646Z">2019-07-27</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 minutes read (About 1010 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/07/27/windows与linux命令/"></a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="渗透windows与linux常用命令"><a href="#渗透windows与linux常用命令" class="headerlink" title="渗透windows与linux常用命令"></a>渗透windows与linux常用命令</h1><h2 id="渗透windows常用DOS命令"><a href="#渗透windows常用DOS命令" class="headerlink" title="渗透windows常用DOS命令"></a>渗透windows常用DOS命令</h2><ol>
+<li>查看本机ip信息: <code>ipconfig</code></li>
+<li>释放ip: <code>ipconfig/release</code></li>
+<li>重新获取ip: <code>ipconfig/renew</code></li>
+<li>查看系统信息: <code>systeminfo</code></li>
+<li>查看局域网计算机列表: <code>arp -a</code></li>
+<li>查看目录信息: <code>dir</code></li>
+<li>切换目录: <code>cd 目录名</code></li>
+<li>打开某个文件: <code>start 文件名</code></li>
+<li>打开某个网页: <code>start URL</code></li>
+<li>创建文件内容: <code>echo xxxx &gt; x.txt</code></li>
+<li>查看文件内容: <code>type xxx.txt</code></li>
+<li>创建目录: <code>md 目录名</code></li>
+<li>删除文件夹: <code>rd 文件夹名</code></li>
+<li>删除文件: <code>del 文件名</code></li>
+<li>复制文件: <code>copy 文件名</code></li>
+<li>移动文件或文件夹: <code>move 文件(夹)名 路径</code></li>
+<li>以树形列出文件夹结构: <code>tree 文件夹名</code></li>
+<li>查看以启动的服务: <code>net start</code></li>
+<li>开启或停止某个服务: <code>net start(stop) 服务名</code></li>
+<li>查看端口占用进程情况: <code>netstat -ano</code></li>
+<li>查看本机用户信息: <code>net user</code></li>
+<li>查看用户组信息: <code>net localgroup</code></li>
+<li>创建用户username: <code>net user username/add</code></li>
+<li>创建隐藏用户username: <code>net user username$/add</code></li>
+<li>将用户username添加到管理用户组: `net localgroup administrators username/add</li>
+<li>更改用户username密码: <code>net user username 更改的密码</code></li>
+<li>删除用户username: <code>net user username/delete</code></li>
+<li>激活(禁用)用户username: <code>net user username/active:yes(no)</code></li>
+<li>开启3389: <code>REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</code>或者<code>wmic RDTOGGLE WHERE ServerName=&#39;%COMPUTERNAME%&#39; call SetAllowTSConnections 1</code></li>
+<li>关闭防火墙: <code>netsh firewall set opmode mode=disable</code>或者<code>netsh advfirewall set allprofiles state off</code></li>
+</ol>
+<h1 id="渗透linux常见命令"><a href="#渗透linux常见命令" class="headerlink" title="渗透linux常见命令"></a>渗透linux常见命令</h1><ol>
+<li>显示主机信息: <code>uname -a</code></li>
+<li>查看主机名: <code>hostname</code></li>
+<li>查看ip信息: <code>ipconfig</code></li>
+<li>查看当前路径: <code>pwd</code></li>
+<li>查看当前目录文件: <code>ls</code> 查看目录文件详细信息<code>ls -l</code></li>
+<li>创建目录: <code>mkdir 目录名</code></li>
+<li>创建新文件: <code>touch 文件名</code></li>
+<li>为文件创建软连接: <code>ln -s 源文件或者目录 链接文件或者目录</code></li>
+<li>复制文件或者目录: <code>cp 源文件或目录 目标文件或目录</code></li>
+<li>删除文件或目录: <code>rm -f</code>强制删除不提醒，<code>rm -r</code>递归删除整个目录树,<code>rm -i</code>删除文件或目录提醒。</li>
+<li>移动文件: <code>mv 源文件或目录</code></li>
+<li>查找文件: <code>find -name 文件名</code></li>
+<li>查看文件内容: <code>cat</code>+文件名</li>
+<li>分页显示文件内容: <code>more</code>+文件名</li>
+<li>查看文件属性: <code>file</code>+文件名</li>
+<li>gzip压缩打包以及解压:<code>gizp -9</code>+文件，最大压缩比压缩。保留源文件压缩<code>gzip -c 文件名 &gt; 文件名.gz</code>解压<code>gzip -dv</code>+文件名.gz，保留源文件解压<code>gzip -cd 文件名.gz &gt; 压缩文件存放的目录地址</code></li>
+<li>bzip2压缩打包: <code>bzip2</code>+文件名。保留源文件压缩<code>bzip2 -k</code>+文件名.解压<code>bzip2 -dv</code>+文件名.bzip2 .保留源文件解压: <code>bzip2 -kd</code>+文件名.bzip2</li>
+<li>tar压缩解压: 以gzip格式压缩<code>tar -zcvf newfile.tar.gz 源文件</code>  gzip格式解压 <code>tar -zxvf 压缩包名 -C 解压的文件放置的目录</code> 以bzip2格式压缩 <code>tar -jcvf newfile.tar.bzip2 源文件</code> 以bzip2格式解压 <code>tar -jxvf 压缩包名 -C 解压的文件放置的目录</code> 查看压缩包中的内容<code>tar -tvf 压缩包名</code></li>
+<li>改变文件权限: <code>chmod (r-&gt;4 w-&gt;2 x-&gt;1)777 文件名</code>或者按user(所有者)-&gt;u，group(组)-&gt;u，others(其他人)-&gt;u,三套属性a.r-&gt;(可读),w-&gt;(可写),x-&gt;(可执行)赋予权限，如chmod u+r test.c-&gt;赋予test.c所有者可读权限.chmod a+w test.c-&gt;赋予test.c所有者，组，以及其他人可写权限。</li>
+<li>更改文件/目录所属的拥有者和组: <code>chown 拥有者名:组名 文件或目录名</code> 只修改所属组: <code>chogrp -R 组名 文件或目录名</code></li>
+<li>添加用户: <code>adduser 用户名</code> 修改密码 <code>passwd 用户名</code>删除用户 <code>userdel 用户名</code></li>
+<li>查看目前登陆身份: <code>whoami</code></li>
+<li>查看目前登陆的用户和组: <code>id</code></li>
+<li>显示磁盘可读的情况: <code>df -h</code></li>
+<li>显示最后登陆的用户: <code>last</code></li>
+<li>查看进程: <code>ps -aux</code> 进程的动态情况 <code>top</code></li>
+<li>终止进程: <code>kill -9 PID</code></li>
+<li>显示进程ID的网络接口: <code>netstat -tulpn</code></li>
+<li>启动ip转发: <code>echo &#39;1&#39; &gt; /proc/sys/net/ipv4/ip_forward</code></li>
+</ol>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-27T03:43:41.912Z">2019-05-27</time>
                 
                 
                 <span class="level-item has-text-grey">
@@ -156,58 +259,62 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/05/25/my_first/">Linux下完成hexo+github pages搭建个人博客</a>
+                <a class="has-link-black-ter" href="/2019/05/27/my_first/">Linux下完成hexo+github pages搭建个人博客</a>
             
         </h1>
         <div class="content">
             <h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ apt-get install gcc g++ make -y &amp;&amp; wget https://nodejs.org/dist/v8.1.2/node-v8.1.2.tar.gz &amp;&amp; tar zxf node-v8.1.2.tar.gz &amp;&amp; <span class="hljs-built_in">cd</span> node-v8.1.2 &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<h2 id="安装nmp"><a href="#安装nmp" class="headerlink" title="安装nmp"></a>安装nmp</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+<h2 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install npm</span><br></pre></td></tr></table></figure>
 <h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
-<h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h2><p> <a href="https://github.com/" target="_blank" rel="noopener">注册github</a></p>
+<h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h2><p><a href="https://github.com/" target="_blank" rel="noopener">注册github</a></p>
 <h2 id="在个人设置中创建存储库（Your-repositories"><a href="#在个人设置中创建存储库（Your-repositories" class="headerlink" title="在个人设置中创建存储库（Your repositories)"></a>在个人设置中创建存储库（Your repositories)</h2><ul>
-<li>Ower: username(登陆github的用户名) / repository name:username.github.io<h2 id="在终端生成ssh-key"><a href="#在终端生成ssh-key" class="headerlink" title="在终端生成ssh key"></a>在终端生成ssh key</h2></li>
-<li><p>在当前用户目录创建.ssh文件夹</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/.ssh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开./ssh</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置密码</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>按下回车后在~/.ssh文件夹下生成两个ssh key(id_rsa,id_rsa.pub)</p>
-</li>
-<li>生成公钥作为本机ssh连接github的口令</li>
-<li><p>如报错为：Could not open a connection to your authentication agent。执行下列命令可解决：</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入github个人设置页面，点击SSH AND GPGKEYS添加一个SSH KEY标题自拟，KEY的内容为在终端输入下面命令，复制密钥（注意复制内容包括头部ssh-rsa与尾部的xxx@xxx）添加完成。</p>
-<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-</li>
+<li>Ower: username(登陆github的用户名) / repository name:username.github.io</li>
 </ul>
+<h2 id="在终端生成ssh-key"><a href="#在终端生成ssh-key" class="headerlink" title="在终端生成ssh key"></a>在终端生成ssh key</h2><ul>
+<li>在当前用户目录创建.ssh文件夹</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/.ssh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>打开./ssh</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置密码</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<ul>
+<li>按下回车后在~/.ssh文件夹下生成两个ssh key(id_rsa,id_rsa.pub)</li>
+<li>生成公钥作为本机ssh连接github的口令</li>
+<li>如报错为：Could not open a connection to your authentication agent。执行下列命令可解决：</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br></pre></td></tr></table></figure>
+<ul>
+<li>进入github个人设置页面，点击SSH AND GPGKEYS添加一个SSH KEY标题自拟，KEY的内容为在终端输入下面命令，复制密钥（注意复制内容包括头部ssh-rsa与尾部的xxx@xxx）添加完成。</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
 <h2 id="配置git-username和email是github上的用户名和注册用的邮箱"><a href="#配置git-username和email是github上的用户名和注册用的邮箱" class="headerlink" title="配置git,username和email是github上的用户名和注册用的邮箱"></a>配置git,username和email是github上的用户名和注册用的邮箱</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="hljs-string">"username"</span></span><br><span class="line">$ git config --global user.email <span class="hljs-string">"email"</span></span><br></pre></td></tr></table></figure>
 <h2 id="测试是否能ssh连接"><a href="#测试是否能ssh连接" class="headerlink" title="测试是否能ssh连接"></a>测试是否能ssh连接</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <ul>
 <li>若报错消息为： The authenticity of host ‘github.com (xxx.xxx.xxx.xxx)’ can’t be established.<br>RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.<br>Are you sure you want to continue connecting (yes/no)?时不能按回车，选择yes即可，在执行上面代码尝试连接，若信息为：You’re successfully authenticated,but github does not provide shell access.则为成功连接。</li>
 </ul>
 <h2 id="搭建本地Hexo"><a href="#搭建本地Hexo" class="headerlink" title="搭建本地Hexo"></a>搭建本地Hexo</h2><ul>
-<li><p>安装hexo</p>
+<li>安装hexo</li>
+</ul>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建blog网站</p>
+<ul>
+<li>创建blog网站</li>
+</ul>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog</span><br><span class="line">$ <span class="hljs-built_in">cd</span> blog</span><br><span class="line">$ npm install</span><br><span class="line">$ hexo server</span><br><span class="line">$ npm instsall hexo-deployer-git -save</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
 <h2 id="配置网站的deploy"><a href="#配置网站的deploy" class="headerlink" title="配置网站的deploy"></a>配置网站的deploy</h2><ul>
-<li>打开网站配置文件_config.yml<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> _config.yml</span><br></pre></td></tr></table></figure>
-</li>
+<li>打开网站配置文件_config.yml</li>
 </ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">cd</span> _config.yml</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="hljs-built_in">type</span>:git</span><br><span class="line">	$ <span class="hljs-built_in">type</span>:git</span><br><span class="line">	$ repo:（在github中打开建立的项目复制ssh形式的地址）</span><br><span class="line">	$ branch:（默认为master）</span><br></pre></td></tr></table></figure>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line">$ hexo g</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
 <ul>
-<li>打开浏览器输入localhost:4000查看效果<h2 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-</li>
+<li>打开浏览器输入localhost:4000查看效果</li>
 </ul>
+<h2 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
 <h2 id="搭建完成。"><a href="#搭建完成。" class="headerlink" title="搭建完成。"></a>搭建完成。</h2><h2 id="参考链接：https-blog-csdn-net-ctsas-article-details-73694849"><a href="#参考链接：https-blog-csdn-net-ctsas-article-details-73694849" class="headerlink" title="参考链接：https://blog.csdn.net/ctsas/article/details/73694849"></a>参考链接：<a href="https://blog.csdn.net/ctsas/article/details/73694849" target="_blank" rel="noopener">https://blog.csdn.net/ctsas/article/details/73694849</a></h2>
         </div>
         
@@ -312,17 +419,17 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Articles
+                        Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        2
+                        3
                     </p>
                 </div>
             </div>
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Catégories
+                        Categories
                     </p>
                     <p class="title has-text-weight-normal">
                         0
@@ -342,7 +449,7 @@
         </nav>
         <div class="level">
             <a class="level-item button is-link is-rounded" href="https://github.com/lsadaharu" target="_blank">
-                SUIVRE</a>
+                Follow</a>
         </div>
         
         
@@ -391,7 +498,7 @@
     <div class="card-content">
         <div class="menu">
         <h3 class="menu-label">
-            Liens
+            Links
         </h3>
         <ul class="menu-list">
         
@@ -429,7 +536,7 @@
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                Catégories
+                Categories
             </h3>
             <ul class="menu-list">
             
@@ -447,12 +554,31 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2019/05/25/my_first/" class="media-left">
+            <a href="/2019/07/27/windows与linux命令/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt>
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-27T04:47:06.646Z">2019-07-27</time></div>
+                    <a href="/2019/07/27/windows与linux命令/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/27/my_first/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Linux下完成hexo+github pages搭建个人博客">
                 </p>
@@ -460,8 +586,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-25T14:10:58.339Z">2019-05-25</time></div>
-                    <a href="/2019/05/25/my_first/" class="has-link-black-ter is-size-6">Linux下完成hexo+github pages搭建个人博客</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T03:43:41.912Z">2019-05-27</time></div>
+                    <a href="/2019/05/27/my_first/" class="has-link-black-ter is-size-6">Linux下完成hexo+github pages搭建个人博客</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -499,6 +625,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -544,12 +681,31 @@
 <div class="card widget">
     <div class="card-content">
         <h3 class="menu-label">
-            Récents
+            Recent
         </h3>
         
         <article class="media">
             
-            <a href="/2019/05/25/my_first/" class="media-left">
+            <a href="/2019/07/27/windows与linux命令/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt>
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-27T04:47:06.646Z">2019-07-27</time></div>
+                    <a href="/2019/07/27/windows与linux命令/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/05/27/my_first/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="Linux下完成hexo+github pages搭建个人博客">
                 </p>
@@ -557,8 +713,8 @@
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-25T14:10:58.339Z">2019-05-25</time></div>
-                    <a href="/2019/05/25/my_first/" class="has-link-black-ter is-size-6">Linux下完成hexo+github pages搭建个人博客</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-05-27T03:43:41.912Z">2019-05-27</time></div>
+                    <a href="/2019/05/27/my_first/" class="has-link-black-ter is-size-6">Linux下完成hexo+github pages搭建个人博客</a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -596,6 +752,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2019/05/">
@@ -638,7 +805,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Hexo" height="28">
+                    <img src="/images/logo.svg" alt="lsadaharu" height="28">
                 
                 </a>
                 <p class="is-size-7">
@@ -796,9 +963,9 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Articles',
+                POSTS: 'Posts',
                 PAGES: 'Pages',
-                CATEGORIES: 'Catégories',
+                CATEGORIES: 'Categories',
                 TAGS: 'Tags',
                 UNTITLED: '(Untitled)',
             },
