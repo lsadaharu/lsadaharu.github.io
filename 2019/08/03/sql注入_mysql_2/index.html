@@ -2,19 +2,23 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Etiquetas - lsadaharu</title>
+<title>lsadaharu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
+    <meta name="description" content="Mysql注入笔记(二) 注入产生的原理 将用户数据当做信任的数据，没有过滤。 过滤的规则不严格，数据库配置不恰当。  注入的类型 按请求方式: GET型，POST型。 按参数类型：整形，字符型。 按反馈类型：UNION型，显错型，布尔型，时间型，搜索型等。 insert 注入，update注入，delete注入，二次注入，宽字节注入等。  数据库信息的收集当判断有注入时，对数据的信息简单收集有助">
+<meta property="og:type" content="article">
 <meta property="og:title" content="lsadaharu">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/03/sql注入_mysql_2/index.html">
 <meta property="og:site_name" content="lsadaharu">
+<meta property="og:description" content="Mysql注入笔记(二) 注入产生的原理 将用户数据当做信任的数据，没有过滤。 过滤的规则不严格，数据库配置不恰当。  注入的类型 按请求方式: GET型，POST型。 按参数类型：整形，字符型。 按反馈类型：UNION型，显错型，布尔型，时间型，搜索型等。 insert 注入，update注入，delete注入，二次注入，宽字节注入等。  数据库信息的收集当判断有注入时，对数据的信息简单收集有助">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-08-03T02:45:35.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lsadaharu">
+<meta name="twitter:description" content="Mysql注入笔记(二) 注入产生的原理 将用户数据当做信任的数据，没有过滤。 过滤的规则不严格，数据库配置不恰当。  注入的类型 按请求方式: GET型，POST型。 按参数类型：整形，字符型。 按反馈类型：UNION型，显错型，布尔型，时间型，搜索型等。 insert 注入，update注入，delete注入，二次注入，宽字节注入等。  数据库信息的收集当判断有注入时，对数据的信息简单收集有助">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -89,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="lsadaharu" height="28">
+                <img src="/images/logo.svg" alt height="28">
             
             </a>
         </div>
@@ -103,7 +107,7 @@
                 
                 <a class="navbar-item" href="/categories">Categories</a>
                 
-                <a class="navbar-item is-active" href="/tags">Tags</a>
+                <a class="navbar-item" href="/tags">Tags</a>
                 
                 <a class="navbar-item" href="/about">About</a>
                 
@@ -134,18 +138,122 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Etiquetas
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-03T03:10:15.955Z">2019-08-03</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    2 minutes read (About 312 words)
+                </span>
+                
                 
             </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                
+            
+        </h1>
+        <div class="content">
+            <h1 id="Mysql注入笔记-二"><a href="#Mysql注入笔记-二" class="headerlink" title="Mysql注入笔记(二)"></a>Mysql注入笔记(二)</h1><hr>
+<h2 id="注入产生的原理"><a href="#注入产生的原理" class="headerlink" title="注入产生的原理"></a>注入产生的原理</h2><ol>
+<li>将用户数据当做信任的数据，没有过滤。</li>
+<li>过滤的规则不严格，数据库配置不恰当。</li>
+</ol>
+<h2 id="注入的类型"><a href="#注入的类型" class="headerlink" title="注入的类型"></a>注入的类型</h2><ol>
+<li>按请求方式: GET型，POST型。</li>
+<li>按参数类型：整形，字符型。</li>
+<li>按反馈类型：UNION型，显错型，布尔型，时间型，搜索型等。</li>
+<li>insert 注入，update注入，delete注入，二次注入，宽字节注入等。</li>
+</ol>
+<h2 id="数据库信息的收集"><a href="#数据库信息的收集" class="headerlink" title="数据库信息的收集"></a>数据库信息的收集</h2><h3 id="当判断有注入时，对数据的信息简单收集有助于后续的注入，在显示位输入相关的函数即可。"><a href="#当判断有注入时，对数据的信息简单收集有助于后续的注入，在显示位输入相关的函数即可。" class="headerlink" title="当判断有注入时，对数据的信息简单收集有助于后续的注入，在显示位输入相关的函数即可。"></a>当判断有注入时，对数据的信息简单收集有助于后续的注入，在显示位输入相关的函数即可。</h3><ul>
+<li>常用的数据库信息搜集的函数以及方法<ol>
+<li>判断数据库的版本号:version(),@@version，/<em>!版本号</em>/意为在该数据库版本之上执行，如查询用户名/<em>!40000 user()</em>/</li>
+<li>数据库类型: database()</li>
+<li>路径收集:@@datadir</li>
+<li>操作系统:@@version_compile_os</li>
+<li>用户名的收集:系统用户名-&gt;system_user(),用户名-&gt;user(),当前用户名-&gt;current_user(),链接数据库-&gt;session_user()</li>
+<li>读取host与user<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from users <span class="hljs-built_in">where</span> id =1 union select 1,host,user from mysql.user;</span><br><span class="line">+----+-----------+----------+</span><br><span class="line">| id | username  | password |</span><br><span class="line">+----+-----------+----------+</span><br><span class="line">|  1 | Dumb      | Dumb     |</span><br><span class="line">|  1 | %         | root     |</span><br><span class="line">|  1 | 127.0.0.1 | root     |</span><br><span class="line">|  1 | ::1       | root     |</span><br><span class="line">|  1 | localhost | root     |</span><br><span class="line">+----+-----------+----------+</span><br><span class="line">5 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+
+        </div>
+        
+        
+        
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/03/sql注入_mysql_1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item"></span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/07/28/HTTP协议基础/">
+                <span class="level-item"></span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -669,7 +777,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="lsadaharu" height="28">
+                    <img src="/images/logo.svg" alt height="28">
                 
                 </a>
                 <p class="is-size-7">
