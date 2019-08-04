@@ -2,19 +2,23 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Archives - lsadaharu</title>
+<title>lsadaharu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
+    <meta name="description" content="Mysql注入笔记（一） SQL的基本语法(增删改查)  创建数据库  12mysql&amp;gt; create database test;Query OK, 1 row affected (0.00 sec)  查询所有数据库  12345678910mysql&amp;gt; show databases;+--------------------+| Database           |+----">
+<meta property="og:type" content="article">
 <meta property="og:title" content="lsadaharu">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/sql注入_mysql_1/index.html">
 <meta property="og:site_name" content="lsadaharu">
+<meta property="og:description" content="Mysql注入笔记（一） SQL的基本语法(增删改查)  创建数据库  12mysql&amp;gt; create database test;Query OK, 1 row affected (0.00 sec)  查询所有数据库  12345678910mysql&amp;gt; show databases;+--------------------+| Database           |+----">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-08-03T01:27:02.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lsadaharu">
+<meta name="twitter:description" content="Mysql注入笔记（一） SQL的基本语法(增删改查)  创建数据库  12mysql&amp;gt; create database test;Query OK, 1 row affected (0.00 sec)  查询所有数据库  12345678910mysql&amp;gt; show databases;+--------------------+| Database           |+----">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -89,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="lsadaharu" height="28">
+                <img src="/images/logo.svg" alt height="28">
             
             </a>
         </div>
@@ -99,7 +103,7 @@
                 
                 <a class="navbar-item" href="/">Home</a>
                 
-                <a class="navbar-item is-active" href="/archives">Archives</a>
+                <a class="navbar-item" href="/archives">Archives</a>
                 
                 <a class="navbar-item" href="/categories">Categories</a>
                 
@@ -134,140 +138,150 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-<div class="card widget">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-04T02:44:41.377Z">2019-08-04</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 429 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                
+            
+        </h1>
+        <div class="content">
+            <h1 id="Mysql注入笔记（一）"><a href="#Mysql注入笔记（一）" class="headerlink" title="Mysql注入笔记（一）"></a>Mysql注入笔记（一）</h1><hr>
+<h2 id="SQL的基本语法-增删改查"><a href="#SQL的基本语法-增删改查" class="headerlink" title="SQL的基本语法(增删改查)"></a>SQL的基本语法(增删改查)</h2><hr>
+<ol>
+<li>创建数据库</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database <span class="hljs-built_in">test</span>;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>查询所有数据库</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| <span class="hljs-built_in">test</span>          |</span><br><span class="line">| performance_schema |</span><br><span class="line">+--------------------+</span><br><span class="line">4 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>使用数据库新建表</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use <span class="hljs-built_in">test</span></span><br><span class="line">Database changed</span><br><span class="line">mysql&gt; create table admin (id int,username varchar(255),password varchar(255));</span><br><span class="line">Query OK, 0 rows affected (0.09 sec)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>查看数据库，插入数据与查询</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show tables;</span><br><span class="line">+---------------------+</span><br><span class="line">| Tables_in_test      |</span><br><span class="line">+---------------------+</span><br><span class="line">| admin               |</span><br><span class="line">+---------------------+</span><br><span class="line">1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into admin (id,username,password) values (1,<span class="hljs-string">"admin"</span>,<span class="hljs-string">"admin"</span>);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from admin;</span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    1 | admin    | admin    |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>where语句查询</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from admin <span class="hljs-built_in">where</span> id =1;</span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    1 | admin    | admin    |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>修改数据</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update admin <span class="hljs-built_in">set</span> username=<span class="hljs-string">'test'</span> <span class="hljs-built_in">where</span> id=1;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from admin;</span><br><span class="line">+------+----------+----------+</span><br><span class="line">| id   | username | password |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">|    1 | <span class="hljs-built_in">test</span>     | admin    |</span><br><span class="line">+------+----------+----------+</span><br><span class="line">1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>删除数据</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delete from admin <span class="hljs-built_in">where</span> username=<span class="hljs-string">'test'</span>;</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from admin;</span><br><span class="line">Empty <span class="hljs-built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="Information-schema库"><a href="#Information-schema库" class="headerlink" title="Information_schema库"></a>Information_schema库</h2><p>这个库在mysql版本5以上才有，这个 库存储了所有库的库名，表名，列名等信息。</p>
+<ul>
+<li>经常引用的数据库表<ol>
+<li>SCHEMATA表：当前mysql中所有的数据库的信息。</li>
+<li>TABLES表：提供数据库中的表的信息。</li>
+<li>COLUMNS表：提供了所有表的列的信息。</li>
+</ol>
+</li>
+</ul>
+<h2 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h2><p>特殊符号在bypass各种防护时使用的最多</p>
+<ul>
+<li>常用的特殊符号</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-string">''</span></span><br><span class="line"><span class="hljs-string">""</span></span><br><span class="line">()</span><br><span class="line">&#123;&#125;</span><br><span class="line">\</span><br><span class="line">\\</span><br><span class="line">``</span><br><span class="line">%</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注释符号</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># </span></span><br><span class="line">/**/  /*/**/等效于/**/</span><br><span class="line">-- + 用这个符号注意是--空格任意字符</span><br><span class="line">;%00</span><br><span class="line">`</span><br><span class="line">/*!*/ 内列注释也可以当作一个空格 /*!/*!*/是等效于/*!*/的</span><br></pre></td></tr></table></figure>
+<ul>
+<li>操作符与逻辑操作符(排在同一行的具有相同的优先级)</li>
+</ul>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">:=</span><br><span class="line">||, OR, XOR</span><br><span class="line">&amp;&amp;, AND</span><br><span class="line">NOT</span><br><span class="line">BETWEEN, CASE, WHEN, THEN, ELSE</span><br><span class="line">=, &lt;=&gt;, &gt;=, &gt;, &lt;=, &lt;, &lt;&gt;, !=, IS, LIKE, REGEXP, IN</span><br><span class="line">|</span><br><span class="line">&amp;</span><br><span class="line">&lt;&lt;, &gt;&gt;</span><br><span class="line">-, +</span><br><span class="line">*, /, DIV, %, MOD</span><br><span class="line">^</span><br><span class="line">- (一元减号), ~ (一元比特反转)</span><br><span class="line">!</span><br><span class="line">BINARY, COLLATE</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:44:41.389Z">2019-08-04</time>
-                        <a href="/2019/08/04/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:44:41.385Z">2019-08-04</time>
-                        <a href="/2019/08/04/HTTP协议基础/" class="has-link-black-ter is-size-6"></a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:44:41.381Z">2019-08-04</time>
-                        <a href="/2019/08/04/my_first/" class="has-link-black-ter is-size-6">Linux下完成hexo+github pages搭建个人博客</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:44:41.377Z">2019-08-04</time>
-                        <a href="/2019/08/04/sql注入_mysql_1/" class="has-link-black-ter is-size-6"></a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:44:41.377Z">2019-08-04</time>
-                        <a href="/2019/08/04/sql注入_mysql_2/" class="has-link-black-ter is-size-6"></a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:44:41.373Z">2019-08-04</time>
-                        <a href="/2019/08/04/sql注入_mysql_3/" class="has-link-black-ter is-size-6"></a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:44:41.273Z">2019-08-04</time>
-                        <a href="/2019/08/04/windows与linux命令/" class="has-link-black-ter is-size-6"></a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:38:49.219Z">2019-08-04</time>
-                        <a href="/2019/08/04/sql注入_mysql_4/" class="has-link-black-ter is-size-6"></a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
-    
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/04/my_first/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Linux下完成hexo+github pages搭建个人博客</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/04/sql注入_mysql_2/">
+                <span class="level-item"></span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
 </div>
                 
 
@@ -748,7 +762,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="lsadaharu" height="28">
+                    <img src="/images/logo.svg" alt height="28">
                 
                 </a>
                 <p class="is-size-7">
