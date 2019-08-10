@@ -141,13 +141,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-04T02:44:41.389Z">2019-08-04</time>
+                <time class="level-item has-text-grey" datetime="2019-08-10T03:09:12.879Z">2019-08-10</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 121 words)
+                    4 minutes read (About 554 words)
                 </span>
                 
                 
@@ -156,19 +156,86 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/08/04/hello-world/">Hello World</a>
+                <a class="has-link-black-ter" href="/2019/08/10/sql注入_mysql_5/"></a>
             
         </h1>
         <div class="content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="hljs-string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h1 id="Mysql注入笔记-五"><a href="#Mysql注入笔记-五" class="headerlink" title="Mysql注入笔记(五)"></a>Mysql注入笔记(五)</h1><hr>
+<h2 id="盲注"><a href="#盲注" class="headerlink" title="盲注"></a>盲注</h2><h3 id="盲注的类型分为时间盲注和布尔盲注，在实际环境中盲注时间一般比较长，而且时间盲注对网络速度的要求较高，在实际注入过程中可用二分法，dnslog等方式加快注入的速度。"><a href="#盲注的类型分为时间盲注和布尔盲注，在实际环境中盲注时间一般比较长，而且时间盲注对网络速度的要求较高，在实际注入过程中可用二分法，dnslog等方式加快注入的速度。" class="headerlink" title="盲注的类型分为时间盲注和布尔盲注，在实际环境中盲注时间一般比较长，而且时间盲注对网络速度的要求较高，在实际注入过程中可用二分法，dnslog等方式加快注入的速度。"></a>盲注的类型分为时间盲注和布尔盲注，在实际环境中盲注时间一般比较长，而且时间盲注对网络速度的要求较高，在实际注入过程中可用二分法，dnslog等方式加快注入的速度。</h3><ul>
+<li>时间盲注<ol>
+<li>盲注一般用到的函数时sleep(),BENCHMARK(),在实际利用过程中需要使用条件判断函数如：<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>(expre1,expre2,expre3) <span class="hljs-comment">#当expre1位真时，返回expre2，为假时，返回expre3</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<p>盲注时，通常会与mysql的分割函数(substr,substring,left)以及正则函数,like函数使用，在使用分割函数时，如果在分割时遇到引号不能使用，可以将分割函数进行编码，一般使用ascii(),hex()等。<br>BENCHMARK()函数的作用是测试一些函数的执行速度，其表达式为：<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BENCHMARK(arg1,arg2)<span class="hljs-comment">#arg1为执行的次数，arg2为执行的函数或者表达式如BENCHMARK(5000000,md5('abc'))将abc使用MD5加密5000000次，页面的延时一般是2秒</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>基于布尔型的盲注</li>
+</ul>
+<ol>
+<li>可参考<a href="https://www.anquanke.com/post/id/170626" target="_blank" rel="noopener">https://www.anquanke.com/post/id/170626</a></li>
+<li><p>通过substr()函数直接截取对比如:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:// xxx/?id=1 and substr((select database()),1,1)=<span class="hljs-string">'a'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用IFNULL(expr1，expr2)函数，函数的特性是如果expr1不为NULL，则IFNULL()函数返回expr1,否则返回expr2。可如下例子</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htt:// xxx/?id=1 and IFNULL((substr((select database()),1,1)==<span class="hljs-string">'a'</span>),0)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用比较函数strcmp()</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:// xxx/?id=1 and strcmp((substr((select database()),1,1)==<span class="hljs-string">'a'</span>),1)</span><br><span class="line">http:// xxx/?id=1 and strcmp((substr((select database()),1,1)=<span class="hljs-string">'a'</span>),0)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="盲注时注意的几点"><a href="#盲注时注意的几点" class="headerlink" title="盲注时注意的几点"></a>盲注时注意的几点</h3><ol>
+<li>盲注使用and查询时，得确定查询到值是存在的</li>
+<li>在返回多组数据时，延时不再是单纯的sleep(time)，它将根据返回数据的条数来反复执行</li>
+<li>在探测搜索型时尽量搜索存在且数目较少的关键词</li>
+<li>尽量不要使用or，如果必须使用到or的延时注入时可以试试子查询，如</li>
+</ol>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:// xxx/?id=1  or <span class="hljs-keyword">if</span>((substr((select database(),1,1)=<span class="hljs-string">'a'</span>),((select sleep(5) from information_schema.schemata as b)),1);</span><br></pre></td></tr></table></figure>
+<h2 id="参考https-github-com-aleenzz-MYSQL-SQL-BYPASS-WIKI-blob-master-1-8-E7-9B-B2-E6-B3-A8-md"><a href="#参考https-github-com-aleenzz-MYSQL-SQL-BYPASS-WIKI-blob-master-1-8-E7-9B-B2-E6-B3-A8-md" class="headerlink" title="参考https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI/blob/master/1-8-%E7%9B%B2%E6%B3%A8.md"></a>参考<a href="https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI/blob/master/1-8-%E7%9B%B2%E6%B3%A8.md" target="_blank" rel="noopener">https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI/blob/master/1-8-%E7%9B%B2%E6%B3%A8.md</a></h2>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-08-10T03:09:12.879Z">2019-08-10</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 432 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2019/08/10/sql注入_mysql_6/"></a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="Mysql注入笔记-六"><a href="#Mysql注入笔记-六" class="headerlink" title="Mysql注入笔记(六)"></a>Mysql注入笔记(六)</h1><hr>
+<h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><p>在使用php连接mysql时，当set character_set_client=gbk时会导致一个编码转换注入的问题，宽字节注入的原理就是当后端使用了addslashes()，get_magic_quotes_gpc进行过滤时，会在单引号前加入转义字符 \ 则会变成 \’，此时我们将提交如<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:// xxx/unicodeSqlTest?id=1%df%27</span><br><span class="line">此时的转换过程为：1%df%27-&gt;(addslashes过滤)-&gt;1%df%5c%27-&gt;GBK转码-&gt;1運<span class="hljs-string">'</span></span><br></pre></td></tr></table></figure></p>
+<p>因数据库无法识别 ‘運’ ，此时单引号逃逸出来了，从而造成注入漏洞。</p>
+<h2 id="二次注入"><a href="#二次注入" class="headerlink" title="二次注入"></a>二次注入</h2><p>二次注入的原理是，当插入被addslashes(),get_magic_quotes_gpc()，rawurlencode(),rawurldecode(),urlencode(),urldecode()等等转义，但是写入数据库还是使用的原来的数据，二次注入由此造成注入的原理图为(网上图)<br><img src="http://www.beesfun.com/2017/03/28/MySQL%E6%B3%A8%E5%85%A5%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5-%E4%B8%89/doubleinject.png" alt="二次注入原理图"><br>假设提交数据id=1%2527,在第一次webserver会自动解码，将%25解码成%,则参数为id=1%27,第二次程序使用了urldecode或者rawurldecode函数来解码id参数，则解码后的结果为id=1’</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>宽字节注入是因为利用了编码转换或者是iconv()函数的转码造成的，防御方式可使用mysql_set_charaset(gbk)指定字符集，再使用mysql_real_escape_string进行转义。<br>二次注入是利用了多次转码来绕过过滤，防御方式为禁止输入的数据库的变量存在非法字符，在数据库输出输出时也使用过滤处理</p>
 
         </div>
         
@@ -802,7 +869,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        9
                     </p>
                 </div>
             </div>
@@ -939,16 +1006,35 @@
         
         <article class="media">
             
-            <a href="/2019/08/04/hello-world/" class="media-left">
+            <a href="/2019/08/10/sql注入_mysql_5/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt>
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-04T02:44:41.389Z">2019-08-04</time></div>
-                    <a href="/2019/08/04/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-10T03:09:12.879Z">2019-08-10</time></div>
+                    <a href="/2019/08/10/sql注入_mysql_5/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/10/sql注入_mysql_6/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt>
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-10T03:09:12.879Z">2019-08-10</time></div>
+                    <a href="/2019/08/10/sql注入_mysql_6/" class="has-link-black-ter is-size-6"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1013,25 +1099,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/04/sql注入_mysql_2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt>
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-04T02:44:41.377Z">2019-08-04</time></div>
-                    <a href="/2019/08/04/sql注入_mysql_2/" class="has-link-black-ter is-size-6"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1050,7 +1117,7 @@
                     <span class="level-item">August 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
@@ -1093,16 +1160,35 @@
         
         <article class="media">
             
-            <a href="/2019/08/04/hello-world/" class="media-left">
+            <a href="/2019/08/10/sql注入_mysql_5/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt>
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-04T02:44:41.389Z">2019-08-04</time></div>
-                    <a href="/2019/08/04/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-10T03:09:12.879Z">2019-08-10</time></div>
+                    <a href="/2019/08/10/sql注入_mysql_5/" class="has-link-black-ter is-size-6"></a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/10/sql注入_mysql_6/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt>
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-10T03:09:12.879Z">2019-08-10</time></div>
+                    <a href="/2019/08/10/sql注入_mysql_6/" class="has-link-black-ter is-size-6"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1167,25 +1253,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <a href="/2019/08/04/sql注入_mysql_2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt>
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-04T02:44:41.377Z">2019-08-04</time></div>
-                    <a href="/2019/08/04/sql注入_mysql_2/" class="has-link-black-ter is-size-6"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -1204,7 +1271,7 @@
                     <span class="level-item">August 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">8</span>
+                    <span class="level-item tag">9</span>
                 </span>
             </a>
         </li>
