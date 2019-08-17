@@ -2,23 +2,19 @@
 <html>
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>lsadaharu</title>
+<title>Archives: 2019/8 - lsadaharu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
-<meta property="og:type" content="article">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="lsadaharu">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/windows与linux命令/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2019/08/page/2/index.html">
 <meta property="og:site_name" content="lsadaharu">
-<meta property="og:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-27T04:43:18.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lsadaharu">
-<meta name="twitter:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -93,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt height="28">
+                <img src="/images/logo.svg" alt="lsadaharu" height="28">
             
             </a>
         </div>
@@ -138,162 +134,84 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-04T02:44:41.273Z">2019-08-04</time>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 minutes read (About 1010 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                
-            
-        </h1>
-        <div class="content">
-            <h1 id="渗透windows与linux常用命令"><a href="#渗透windows与linux常用命令" class="headerlink" title="渗透windows与linux常用命令"></a>渗透windows与linux常用命令</h1><h2 id="渗透windows常用DOS命令"><a href="#渗透windows常用DOS命令" class="headerlink" title="渗透windows常用DOS命令"></a>渗透windows常用DOS命令</h2><ol>
-<li>查看本机ip信息: <code>ipconfig</code></li>
-<li>释放ip: <code>ipconfig/release</code></li>
-<li>重新获取ip: <code>ipconfig/renew</code></li>
-<li>查看系统信息: <code>systeminfo</code></li>
-<li>查看局域网计算机列表: <code>arp -a</code></li>
-<li>查看目录信息: <code>dir</code></li>
-<li>切换目录: <code>cd 目录名</code></li>
-<li>打开某个文件: <code>start 文件名</code></li>
-<li>打开某个网页: <code>start URL</code></li>
-<li>创建文件内容: <code>echo xxxx &gt; x.txt</code></li>
-<li>查看文件内容: <code>type xxx.txt</code></li>
-<li>创建目录: <code>md 目录名</code></li>
-<li>删除文件夹: <code>rd 文件夹名</code></li>
-<li>删除文件: <code>del 文件名</code></li>
-<li>复制文件: <code>copy 文件名</code></li>
-<li>移动文件或文件夹: <code>move 文件(夹)名 路径</code></li>
-<li>以树形列出文件夹结构: <code>tree 文件夹名</code></li>
-<li>查看以启动的服务: <code>net start</code></li>
-<li>开启或停止某个服务: <code>net start(stop) 服务名</code></li>
-<li>查看端口占用进程情况: <code>netstat -ano</code></li>
-<li>查看本机用户信息: <code>net user</code></li>
-<li>查看用户组信息: <code>net localgroup</code></li>
-<li>创建用户username: <code>net user username/add</code></li>
-<li>创建隐藏用户username: <code>net user username$/add</code></li>
-<li>将用户username添加到管理用户组: `net localgroup administrators username/add</li>
-<li>更改用户username密码: <code>net user username 更改的密码</code></li>
-<li>删除用户username: <code>net user username/delete</code></li>
-<li>激活(禁用)用户username: <code>net user username/active:yes(no)</code></li>
-<li>开启3389: <code>REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</code>或者<code>wmic RDTOGGLE WHERE ServerName=&#39;%COMPUTERNAME%&#39; call SetAllowTSConnections 1</code></li>
-<li>关闭防火墙: <code>netsh firewall set opmode mode=disable</code>或者<code>netsh advfirewall set allprofiles state off</code></li>
-</ol>
-<h1 id="渗透linux常见命令"><a href="#渗透linux常见命令" class="headerlink" title="渗透linux常见命令"></a>渗透linux常见命令</h1><ol>
-<li>显示主机信息: <code>uname -a</code></li>
-<li>查看主机名: <code>hostname</code></li>
-<li>查看ip信息: <code>ipconfig</code></li>
-<li>查看当前路径: <code>pwd</code></li>
-<li>查看当前目录文件: <code>ls</code> 查看目录文件详细信息<code>ls -l</code></li>
-<li>创建目录: <code>mkdir 目录名</code></li>
-<li>创建新文件: <code>touch 文件名</code></li>
-<li>为文件创建软连接: <code>ln -s 源文件或者目录 链接文件或者目录</code></li>
-<li>复制文件或者目录: <code>cp 源文件或目录 目标文件或目录</code></li>
-<li>删除文件或目录: <code>rm -f</code>强制删除不提醒，<code>rm -r</code>递归删除整个目录树,<code>rm -i</code>删除文件或目录提醒。</li>
-<li>移动文件: <code>mv 源文件或目录</code></li>
-<li>查找文件: <code>find -name 文件名</code></li>
-<li>查看文件内容: <code>cat</code>+文件名</li>
-<li>分页显示文件内容: <code>more</code>+文件名</li>
-<li>查看文件属性: <code>file</code>+文件名</li>
-<li>gzip压缩打包以及解压:<code>gizp -9</code>+文件，最大压缩比压缩。保留源文件压缩<code>gzip -c 文件名 &gt; 文件名.gz</code>解压<code>gzip -dv</code>+文件名.gz，保留源文件解压<code>gzip -cd 文件名.gz &gt; 压缩文件存放的目录地址</code></li>
-<li>bzip2压缩打包: <code>bzip2</code>+文件名。保留源文件压缩<code>bzip2 -k</code>+文件名.解压<code>bzip2 -dv</code>+文件名.bzip2 .保留源文件解压: <code>bzip2 -kd</code>+文件名.bzip2</li>
-<li>tar压缩解压: 以gzip格式压缩<code>tar -zcvf newfile.tar.gz 源文件</code>  gzip格式解压 <code>tar -zxvf 压缩包名 -C 解压的文件放置的目录</code> 以bzip2格式压缩 <code>tar -jcvf newfile.tar.bzip2 源文件</code> 以bzip2格式解压 <code>tar -jxvf 压缩包名 -C 解压的文件放置的目录</code> 查看压缩包中的内容<code>tar -tvf 压缩包名</code></li>
-<li>改变文件权限: <code>chmod (r-&gt;4 w-&gt;2 x-&gt;1)777 文件名</code>或者按user(所有者)-&gt;u，group(组)-&gt;u，others(其他人)-&gt;u,三套属性a.r-&gt;(可读),w-&gt;(可写),x-&gt;(可执行)赋予权限，如chmod u+r test.c-&gt;赋予test.c所有者可读权限.chmod a+w test.c-&gt;赋予test.c所有者，组，以及其他人可写权限。</li>
-<li>更改文件/目录所属的拥有者和组: <code>chown 拥有者名:组名 文件或目录名</code> 只修改所属组: <code>chogrp -R 组名 文件或目录名</code></li>
-<li>添加用户: <code>adduser 用户名</code> 修改密码 <code>passwd 用户名</code>删除用户 <code>userdel 用户名</code></li>
-<li>查看目前登陆身份: <code>whoami</code></li>
-<li>查看目前登陆的用户和组: <code>id</code></li>
-<li>显示磁盘可读的情况: <code>df -h</code></li>
-<li>显示最后登陆的用户: <code>last</code></li>
-<li>查看进程: <code>ps -aux</code> 进程的动态情况 <code>top</code></li>
-<li>终止进程: <code>kill -9 PID</code></li>
-<li>显示进程ID的网络接口: <code>netstat -tulpn</code></li>
-<li>启动ip转发: <code>echo &#39;1&#39; &gt; /proc/sys/net/ipv4/ip_forward</code></li>
-</ol>
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
 
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-<div class="card">
+<div class="card widget">
     <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
+        <h3 class="tag is-link">
+        August 2019
+        </h3>
+        <div class="timeline">
+        
+            <article class="media">
                 
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:44:41.373Z">2019-08-04</time>
+                        <a href="/2019/08/04/sql注入_mysql_3/" class="has-link-black-ter is-size-6"></a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="media">
                 
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:44:41.273Z">2019-08-04</time>
+                        <a href="/2019/08/04/windows与linux命令/" class="has-link-black-ter is-size-6"></a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
+            <article class="media">
                 
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
+                <div class="media-content">
+                    <div class="content">
+                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-08-04T02:38:49.219Z">2019-08-04</time>
+                        <a href="/2019/08/04/sql注入_mysql_4/" class="has-link-black-ter is-size-6"></a>
+                        <div class="level article-meta is-mobile">
+                            <div class="level-left">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        
         </div>
     </div>
 </div>
 
 
 
+    
 <div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/04/sql注入_mysql_3/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item"></span>
-            </a>
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2019/08/">Previous</a>
         </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/04/sql注入_mysql_4/">
-                <span class="level-item"></span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
+        <div class="pagination-next is-invisible is-hidden-mobile">
+            <a class="is-flex-grow has-text-black-ter" href="/archives/2019/08/page/3/">Next</a>
         </div>
-        
-    </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/archives/2019/08/">1</a></li>
+            
+            <li><a class="pagination-link is-current" href="/archives/2019/08/page/2/">2</a></li>
+            
+        </ul>
+    </nav>
 </div>
-
-
 </div>
                 
 
@@ -774,7 +692,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt height="28">
+                    <img src="/images/logo.svg" alt="lsadaharu" height="28">
                 
                 </a>
                 <p class="is-size-7">

